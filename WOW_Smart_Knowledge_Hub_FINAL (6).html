@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Knowledge Hub | Smart People</title>
+<meta name="description" content="Practical SAP SuccessFactors resources built from real implementation experience. Free checklists, deep dives and roadmaps for consultants, companies and implementation partners.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange:    #ff914d;
+  --teal:      #20a2b9;
+  --rose:      #bc7c85;
+  --navy:      #1b2a4a;
+  --burgundy:  #7a2535;
+  --white:     #ffffff;
+  --off-white: #f7f7f5;
+  --gray-line: #e8e8e4;
+  --gray:      #7a7a7a;
+  --dark:      #0f1520;
+  --font:      'Montserrat', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); color: var(--dark); background: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* ── NAV ─────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(15,21,32,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(32,162,185,0.15);
+  padding: 0 60px; height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-left { display: flex; align-items: center; gap: 16px; }
+.nav-logo { height: 34px; mix-blend-mode: screen; filter: brightness(1.1); }
+.nav-hub {
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--teal); opacity: 0.8;
+  padding-left: 16px; border-left: 1px solid rgba(32,162,185,0.3);
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color .2s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-cta { background: var(--teal) !important; color: white !important; padding: 8px 20px; border-radius: 50px; }
+.nav-cta:hover { opacity: .85; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #20a2b9 0%, #1b2a4a 100%);
+  position: relative;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 60px 0;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 55% 55% at 85% 15%, rgba(32,162,185,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 45% at 5% 85%, rgba(255,145,77,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 40% at 55% 55%, rgba(188,124,133,0.06) 0%, transparent 70%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.03;
+  background-image: linear-gradient(rgba(32,162,185,1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(32,162,185,1) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(32,162,185,0.15); border: 1px solid rgba(32,162,185,0.35);
+  color: #bde3f1; padding: 6px 16px; border-radius: 50px;
+  font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 28px; animation: fadeUp .6s ease both;
+}
+.hero-badge::before { content:''; width:7px; height:7px; background:var(--teal); border-radius:50%; }
+.hero h1 {
+  font-size: clamp(42px, 6vw, 72px); font-weight: 900;
+  color: white; line-height: 1.0; letter-spacing: -0.03em;
+  margin-bottom: 24px; animation: fadeUp .6s ease .1s both;
+}
+.hero h1 .accent   { color: var(--teal); }
+.hero h1 .accent-o { color: var(--orange); }
+.hero-sub {
+  font-size: 17px; color: rgba(255,255,255,.52);
+  max-width: 560px; line-height: 1.78; margin-bottom: 56px;
+  animation: fadeUp .6s ease .2s both;
+}
+.hero-audiences { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; animation: fadeUp .6s ease .3s both; }
+.ac {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px; padding: 24px; cursor: pointer; transition: all .3s;
+  position: relative; overflow: hidden;
+}
+.ac::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.ac-t::before { background: var(--teal); }
+.ac-o::before { background: var(--orange); }
+.ac-b::before { background: var(--rose); }
+.ac:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.ac-icon { font-size: 22px; margin-bottom: 12px; }
+.ac-lbl { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.ac-t .ac-lbl { color: var(--teal); }
+.ac-o .ac-lbl { color: var(--orange); }
+.ac-b .ac-lbl { color: var(--rose); }
+.ac-title { font-size: 14px; font-weight: 800; color: white; margin-bottom: 6px; line-height: 1.3; }
+.ac-desc { font-size: 12px; color: rgba(255,255,255,.38); line-height: 1.6; margin-bottom: 14px; }
+.ac-arrow { font-size: 12px; font-weight: 700; transition: transform .2s; display: inline-block; }
+.ac-t .ac-arrow { color: var(--teal); }
+.ac-o .ac-arrow { color: var(--orange); }
+.ac-b .ac-arrow { color: var(--rose); }
+.ac:hover .ac-arrow { transform: translateX(5px); }
+
+/* ── WAVE DIVIDER ─────────────────────────────────── */
+.wd { width:100%; overflow:hidden; line-height:0; display:block; }
+.wd svg { display:block; width:100%; }
+
+/* ── PANELS WRAPPER ──────────────────────────────── */
+.panels-wrapper { background: var(--off-white); }
+.aud-panel { display: none; padding: 64px 60px; max-width: 1260px; margin: 0 auto; }
+.aud-panel.active { display: block; }
+.panel-intro {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  align-items: start; margin-bottom: 44px;
+  padding-bottom: 36px; border-bottom: 2px solid var(--gray-line);
+}
+.panel-intro h2 { font-size: 28px; font-weight: 900; line-height: 1.15; color: var(--dark); }
+.panel-intro h2 strong { display: block; }
+.panel-intro p { font-size: 14.5px; color: var(--gray); line-height: 1.78; padding-top: 4px; }
+
+/* ── CARDS GRID ──────────────────────────────────── */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+.mat-card {
+  background: white; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05); transition: all .25s ease;
+  display: flex; flex-direction: column; border: 1.5px solid transparent;
+}
+.mat-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,.1); border-color: var(--gray-line); }
+.mat-card.featured { grid-column: span 2; flex-direction: row; }
+.card-cover {
+  height: 190px; position: relative; display: flex; flex-direction: column;
+  justify-content: space-between; padding: 18px 20px; overflow: hidden; flex-shrink: 0;
+}
+.mat-card.featured .card-cover { width: 300px; height: auto; min-height: 220px; }
+.cover-navy { background: linear-gradient(145deg, #0e1621 0%, #0a2235 40%, #023959 100%); }
+.cover-orange { background: linear-gradient(170deg, #13151e 0%, #46210f 35%, #672805 65%, #c06731 100%); }
+.cover-burgundy { background: linear-gradient(145deg, #111520 0%, #2d1727 40%, #3f192b 70%, #79394d 100%); }
+.card-cover::before {
+  content:''; position:absolute; right:-25px; top:-25px;
+  width:120px; height:120px; border-radius:50%; background: rgba(255,255,255,.04);
+}
+.card-cover::after {
+  content:''; position:absolute; right:25px; bottom:-35px;
+  width:80px; height:80px; border-radius:50%; background: rgba(255,255,255,.03);
+}
+.cover-header { display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:2; }
+.cover-logo-text { font-size:11px; font-weight:900; color:white; letter-spacing:.5px; }
+.cover-logo-text .sp-accent { color: var(--orange); }
+.cover-navy .cover-logo-text .sp-accent { color: var(--teal); }
+.cover-type-pill {
+  font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.2);
+  padding: 4px 10px; border-radius: 50px; background: rgba(255,255,255,.08); white-space: nowrap;
+}
+.cover-bottom { position:relative; z-index:2; }
+.cover-module { font-size: 9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:6px; }
+.cover-title { font-size:14px; font-weight:800; color:white; line-height:1.3; }
+.cover-navy .cover-title em { color: var(--teal); font-style: normal; }
+.cover-orange .cover-title em { color: #ffa870; font-style: normal; }
+.cover-burgundy .cover-title em { color: #e8a0aa; font-style: normal; }
+.cover-logo-mark {
+  position:absolute; bottom:14px; right:16px;
+  font-size:8px; font-weight:800; letter-spacing:1px;
+  color:rgba(255,255,255,.18); text-transform:uppercase; z-index:2;
+}
+.card-body { padding: 20px 22px 22px; display:flex; flex-direction:column; flex:1; }
+.card-body h3 { font-size:14px; font-weight:700; line-height:1.45; color:var(--dark); margin-bottom:8px; }
+.card-body p { font-size:12.5px; color:var(--gray); line-height:1.65; flex:1; margin-bottom:16px; }
+.card-footer { display:flex; align-items:center; justify-content:flex-end; margin-top:auto; }
+.dl-btn {
+  font-family:var(--font); font-size:11px; font-weight:800; letter-spacing:.5px;
+  padding:10px 20px; border-radius:50px; color:white;
+  display:inline-flex; align-items:center; gap:6px; transition:all .2s; cursor:pointer; border:none;
+}
+.dl-btn-navy     { background: #1b2a4a; }
+.dl-btn-orange   { background: var(--orange); }
+.dl-btn-burgundy { background: var(--burgundy); }
+.dl-btn:hover { opacity:.85; transform:scale(1.04); }
+
+/* ── TEAL STRIP ─────────────────────────────────── */
+.teal-strip { background: var(--teal); padding: 44px 60px; }
+.teal-strip-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:60px; }
+.teal-strip h3 { font-size:24px; font-weight:800; color:white; flex:1; line-height:1.3; }
+.teal-strip p { font-size:14px; color:rgba(255,255,255,.82); line-height:1.75; flex:1.4; }
+
+/* ── CTA BANNERS ─────────────────────────────────── */
+.cta-banner { padding: 68px 60px; position:relative; overflow:hidden; }
+.cta-banner-navy     { background: var(--teal); }
+.cta-banner-orange   { background: linear-gradient(120deg, #d4611e 0%, #ff914d 100%); }
+.cta-banner-burgundy { background: linear-gradient(160deg, #2D1B1E 0%, #4A1E2E 40%, #2D2530 100%); }
+.cta-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:60px; justify-content:space-between; }
+.cta-inner h2 { font-size:32px; font-weight:900; color:white; margin-bottom:10px; }
+.cta-inner p { font-size:15px; color:rgba(255,255,255,.8); line-height:1.7; max-width:540px; }
+.cta-btns { display:flex; gap:12px; flex-shrink:0; flex-direction:column; min-width:240px; }
+.btn-white {
+  background:white; font-family:var(--font); font-size:12px; font-weight:800;
+  padding:13px 24px; border-radius:50px; letter-spacing:.5px;
+  white-space:nowrap; transition:all .2s; text-align:center; display:block;
+}
+.btn-white-navy     { color: #1b2a4a; }
+.btn-white-orange   { color: #c04a10; }
+.btn-white-burgundy { color: var(--burgundy); }
+.btn-white:hover { transform:scale(1.03); box-shadow:0 6px 20px rgba(0,0,0,.18); }
+.btn-ghost {
+  border:1.5px solid rgba(255,255,255,.45); color:white;
+  font-family:var(--font); font-size:12px; font-weight:800;
+  padding:13px 24px; border-radius:50px; letter-spacing:.5px;
+  white-space:nowrap; transition:all .2s; text-align:center; display:block;
+}
+.btn-ghost:hover { border-color:white; background:rgba(255,255,255,.1); }
+
+/* ── SP BRAND WAVE SHAPES ─────────────────────── */
+/* ── SP BRAND WAVE SHAPES ─────────────────────── */
+/* Zamień src="WAVE_WHITE.png" na ścieżkę do Twojego PNG z przezroczystym tłem */
+/* Dostępne warianty: zigzag_outlines.png / zigzag_white.png / zigzag_teal_fill.png */
+.sp-wave {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  object-fit: contain;
+}
+
+/* ── FREE / PREMIUM BADGES ──────────────────────── */
+.badge-free {
+  position:absolute; top:14px; right:14px; z-index:5;
+  background:rgba(32,162,185,0.9); color:white;
+  font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  padding:4px 10px; border-radius:50px;
+}
+.badge-premium {
+  position:absolute; top:14px; right:14px; z-index:5;
+  background:rgba(255,145,77,0.9); color:white;
+  font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  padding:4px 10px; border-radius:50px;
+}
+.premium-overlay {
+  position:absolute; top:0; left:0; right:0; bottom:0; z-index:3;
+  background:rgba(0,0,0,0.45);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+}
+.premium-lock {
+  font-size:32px; background:rgba(0,0,0,0.4);
+  width:56px; height:56px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.mat-card.premium { opacity:0.92; }
+.mat-card.premium .card-body .dl-btn {
+  background:rgba(255,145,77,0.15) !important;
+  color:#ff914d !important;
+  border-color:#ff914d !important;
+  pointer-events:none;
+}
+
+/* ── REGISTRATION MODAL ─────────────────────────── */
+.reg-modal-bg {
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.7); z-index:9999;
+  align-items:center; justify-content:center;
+}
+.reg-modal-bg.active { display:flex; }
+.reg-modal {
+  background:linear-gradient(160deg, #2D1B1E 0%, #4A1E2E 40%, #2D2530 100%);
+  color:white; border-radius:16px; padding:40px;
+  max-width:480px; width:90%; position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  font-family:var(--font);
+}
+.reg-modal h3 { font-size:20px; font-weight:800; margin-bottom:6px; }
+.reg-modal .reg-sub { font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:24px; line-height:1.6; }
+.reg-modal input, .reg-modal select {
+  width:100%; box-sizing:border-box;
+  background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.15);
+  border-radius:10px; padding:11px 14px; color:white;
+  font-family:var(--font); font-size:14px; outline:none; margin-bottom:10px;
+}
+.reg-modal input::placeholder { color:rgba(255,255,255,0.35); }
+.reg-modal input:focus, .reg-modal select:focus { border-color:var(--teal); }
+.reg-modal label {
+  display:block; font-size:10px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:5px;
+}
+.reg-modal .reg-btn {
+  width:100%; padding:13px; border:none; border-radius:10px;
+  background:var(--teal); color:white; font-family:var(--font);
+  font-size:14px; font-weight:800; cursor:pointer; margin-top:8px;
+  letter-spacing:0.5px;
+}
+.reg-modal .reg-btn:hover { background:#178a9e; }
+.reg-modal .reg-close {
+  position:absolute; top:14px; right:18px;
+  background:none; border:none; color:rgba(255,255,255,0.4);
+  font-size:22px; cursor:pointer;
+}
+.reg-modal .reg-close:hover { color:white; }
+.reg-modal .reg-note {
+  font-size:11px; color:rgba(255,255,255,0.35); margin-top:14px; line-height:1.5; text-align:center;
+}
+
+/* ── INTERACTIVE TOOLS (teasers) ─────────────────── */
+.tool-teaser {
+  background:white; border:2px solid var(--orange); border-radius:16px;
+  padding:28px 30px; margin-bottom:16px; position:relative; overflow:hidden;
+}
+.tool-teaser::before {
+  content:''; position:absolute; top:0; right:0; width:200px; height:100%;
+  background:linear-gradient(135deg, transparent 50%, rgba(255,145,77,0.04) 100%);
+  pointer-events:none;
+}
+.tool-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.tool-icon { width:44px; height:44px; background:linear-gradient(135deg,#ff914d,#e07530); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.tool-badge { font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:white; background:var(--orange); padding:3px 10px; border-radius:50px; }
+.tool-title { font-size:17px; font-weight:800; color:var(--dark); }
+.tool-desc { font-size:12px; color:var(--gray); margin-bottom:18px; }
+
+.tool-inputs { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:18px; }
+.tool-field label { display:block; font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gray); margin-bottom:5px; }
+.tool-field input, .tool-field select {
+  width:100%; box-sizing:border-box; padding:10px 12px; border:1.5px solid #e0e0e0;
+  border-radius:10px; font-family:var(--font); font-size:14px; font-weight:600;
+  color:var(--dark); outline:none; transition:border-color .2s;
+}
+.tool-field input:focus, .tool-field select:focus { border-color:var(--orange); }
+.tool-field .hint { font-size:10px; color:#bbb; margin-top:3px; }
+
+.tool-result {
+  background:linear-gradient(135deg,#fff8f2,#fff0e0); border:1.5px solid rgba(255,145,77,0.2);
+  border-radius:12px; padding:16px 20px; display:none; margin-bottom:14px;
+}
+.tool-result.show { display:block; animation:fadeUp .4s ease; }
+.tool-result .tr-label { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--orange); margin-bottom:4px; }
+.tool-result .tr-value { font-size:28px; font-weight:800; color:var(--dark); }
+.tool-result .tr-sub { font-size:11px; color:var(--gray); margin-top:4px; }
+
+.tool-cta {
+  display:flex; align-items:center; gap:14px; padding:12px 16px;
+  background:rgba(255,145,77,0.06); border:1.5px solid rgba(255,145,77,0.15);
+  border-radius:10px; cursor:pointer; transition:all .2s;
+}
+.tool-cta:hover { background:rgba(255,145,77,0.12); border-color:var(--orange); }
+.tool-cta .tc-text { font-size:12px; font-weight:700; color:var(--orange); }
+.tool-cta .tc-sub { font-size:10px; color:var(--gray); margin-top:2px; }
+
+/* Skills scan */
+.scan-q { margin-bottom:14px; }
+.scan-q-text { font-size:12px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+.scan-opts { display:flex; gap:8px; }
+.scan-opt {
+  flex:1; padding:10px 8px; border:1.5px solid #e0e0e0; border-radius:10px;
+  text-align:center; cursor:pointer; transition:all .2s; font-size:11px; font-weight:600; color:var(--gray);
+}
+.scan-opt:hover { border-color:var(--orange); color:var(--orange); }
+.scan-opt.selected { border-color:var(--orange); background:rgba(255,145,77,0.08); color:var(--orange); }
+
+.scan-bar { height:8px; background:#eee; border-radius:4px; overflow:hidden; margin:4px 0; }
+.scan-bar-fill { height:100%; border-radius:4px; transition:width .5s ease; }
+
+@media (max-width:768px) {
+  .tool-inputs { grid-template-columns:1fr; }
+  .scan-opts { flex-wrap:wrap; }
+  .scan-opt { flex:none; width:calc(33% - 6px); }
+}
+
+/* ── QUIZ MODAL ──────────────────────────────────── */
+.quiz-modal-bg {
+  position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:10000;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+  backdrop-filter:blur(6px);
+}
+.quiz-modal-bg.open { opacity:1; pointer-events:all; }
+.quiz-modal {
+  background:linear-gradient(145deg,#0f1520,#1b2a4a); color:white;
+  border-radius:18px; padding:36px 32px; max-width:480px; width:92%;
+  position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+.quiz-modal h3 { font-size:22px; font-weight:800; margin-bottom:8px; }
+.quiz-modal .quiz-sub { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:24px; line-height:1.6; }
+.quiz-step { display:none; }
+.quiz-step.active { display:block; }
+.quiz-q { font-size:14px; font-weight:700; margin-bottom:16px; color:rgba(255,255,255,0.85); }
+.quiz-opts { display:flex; flex-direction:column; gap:10px; }
+.quiz-opt {
+  background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:12px; padding:14px 18px; cursor:pointer; transition:all .2s;
+  display:flex; align-items:center; gap:12px;
+}
+.quiz-opt:hover { border-color:var(--teal); background:rgba(32,162,185,0.08); }
+.quiz-opt .qo-icon { font-size:20px; flex-shrink:0; }
+.quiz-opt .qo-title { font-size:13px; font-weight:700; color:white; }
+.quiz-opt .qo-desc { font-size:11px; color:rgba(255,255,255,0.45); margin-top:2px; }
+.quiz-progress { display:flex; gap:6px; margin-bottom:20px; }
+.quiz-dot { width:40px; height:4px; border-radius:2px; background:rgba(255,255,255,0.12); }
+.quiz-dot.done { background:var(--teal); }
+.quiz-dot.current { background:var(--orange); }
+.quiz-skip { text-align:center; margin-top:16px; }
+.quiz-skip a { font-size:11px; color:rgba(255,255,255,0.3); text-decoration:none; cursor:pointer; }
+.quiz-skip a:hover { color:rgba(255,255,255,0.6); }
+
+/* ── PROGRESS TRACKING ──────────────────────────── */
+.card-downloaded { position:relative; }
+.card-downloaded::after {
+  content:'✓ Downloaded'; position:absolute; top:12px; left:12px;
+  background:rgba(32,162,185,0.9); color:white; font-size:10px; font-weight:700;
+  padding:4px 10px; border-radius:50px; letter-spacing:0.5px; z-index:5;
+}
+.next-suggestion {
+  background:linear-gradient(135deg,rgba(32,162,185,0.08),rgba(32,162,185,0.03));
+  border:1.5px solid rgba(32,162,185,0.2); border-radius:12px;
+  padding:14px 18px; margin-top:12px; display:none;
+}
+.next-suggestion.show { display:block; }
+.next-suggestion .ns-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal); margin-bottom:4px; }
+.next-suggestion .ns-title { font-size:13px; font-weight:700; color:var(--dark); }
+
+/* ── SEARCH BAR ──────────────────────────────────── */
+.hub-search {
+  max-width:600px; margin:0 auto 24px; position:relative;
+}
+.hub-search input {
+  width:100%; box-sizing:border-box; padding:14px 20px 14px 46px;
+  border:1.5px solid #ddd; border-radius:12px; font-family:var(--font);
+  font-size:14px; color:var(--dark); background:white; outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.hub-search input:focus { border-color:var(--teal); box-shadow:0 0 0 3px rgba(32,162,185,0.1); }
+.hub-search input::placeholder { color:#bbb; }
+.hub-search .search-icon {
+  position:absolute; left:16px; top:50%; transform:translateY(-50%);
+  font-size:18px; color:#ccc; pointer-events:none;
+}
+.hub-search .search-count {
+  position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:11px; color:#999; font-weight:600;
+}
+.mat-card.search-hidden { display:none !important; }
+
+/* ── LINKEDIN SHARE ─────────────────────────────── */
+.li-share {
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:11px; font-weight:700; color:#0a66c2; cursor:pointer;
+  text-decoration:none; margin-left:10px; opacity:0.7; transition:opacity .2s;
+}
+.li-share:hover { opacity:1; }
+.li-share svg { width:14px; height:14px; fill:#0a66c2; }
+
+/* ── STICKY RECOMMENDATION BAR ──────────────────── */
+.sticky-rec {
+  position:fixed; bottom:0; left:0; right:0; z-index:9000;
+  background:linear-gradient(135deg,#0f1520,#1b2a4a); color:white;
+  padding:12px 30px; display:flex; align-items:center; justify-content:center; gap:16px;
+  transform:translateY(100%); transition:transform .4s ease;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.2);
+}
+.sticky-rec.show { transform:translateY(0); }
+.sticky-rec .sr-label { font-size:11px; color:rgba(255,255,255,0.5); font-weight:600; letter-spacing:0.5px; }
+.sticky-rec .sr-title { font-size:13px; font-weight:800; }
+.sticky-rec .sr-btn {
+  padding:8px 20px; border:none; border-radius:8px; background:var(--teal);
+  color:white; font-family:var(--font); font-size:12px; font-weight:700;
+  cursor:pointer; white-space:nowrap;
+}
+.sticky-rec .sr-close {
+  background:none; border:none; color:rgba(255,255,255,0.3); font-size:18px;
+  cursor:pointer; margin-left:8px;
+}
+.sticky-rec .sr-close:hover { color:white; }
+
+/* ── ANIMATED HERO STATS ────────────────────────── */
+.hero-stats {
+  display:flex; gap:32px; margin-top:28px; padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+.hero-stat { text-align:center; }
+.hero-stat .hs-num { font-size:28px; font-weight:800; color:var(--teal); }
+.hero-stat .hs-num .hs-plus { font-size:18px; color:var(--orange); }
+.hero-stat .hs-label { font-size:11px; color:rgba(255,255,255,0.4); font-weight:600; letter-spacing:0.5px; margin-top:2px; }
+
+/* ── SUGGEST TOPIC ──────────────────────────────── */
+.suggest-section {
+  background:var(--off-white); padding:48px 60px; text-align:center;
+}
+.suggest-box {
+  max-width:560px; margin:0 auto; background:white; border-radius:16px;
+  padding:32px; border:1.5px solid var(--gray-line); box-shadow:0 2px 12px rgba(0,0,0,0.04);
+}
+.suggest-box h3 { font-size:18px; font-weight:800; color:var(--dark); margin-bottom:6px; }
+.suggest-box .sg-sub { font-size:13px; color:var(--gray); margin-bottom:20px; line-height:1.6; }
+.suggest-box textarea {
+  width:100%; box-sizing:border-box; padding:12px 16px; border:1.5px solid #ddd;
+  border-radius:10px; font-family:var(--font); font-size:13px; color:var(--dark);
+  resize:vertical; min-height:80px; outline:none; margin-bottom:10px;
+}
+.suggest-box textarea:focus { border-color:var(--teal); }
+.suggest-box textarea::placeholder { color:#bbb; }
+.suggest-box .sg-row { display:flex; gap:10px; }
+.suggest-box .sg-email {
+  flex:1; padding:11px 14px; border:1.5px solid #ddd; border-radius:10px;
+  font-family:var(--font); font-size:13px; outline:none; box-sizing:border-box;
+}
+.suggest-box .sg-email:focus { border-color:var(--teal); }
+.suggest-box .sg-btn {
+  padding:11px 24px; border:none; border-radius:10px; background:var(--teal);
+  color:white; font-family:var(--font); font-size:13px; font-weight:700;
+  cursor:pointer; white-space:nowrap;
+}
+.suggest-box .sg-btn:hover { background:#178a9e; }
+.suggest-box .sg-thanks {
+  display:none; padding:16px; background:rgba(32,162,185,0.08);
+  border-radius:10px; color:var(--teal); font-weight:700; font-size:14px;
+}
+
+/* ── SCROLL REVEAL ────────────────────────────────── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width:960px) {
+  nav, .hero, .aud-panel, .cta-banner, .teal-strip { padding-left:24px; padding-right:24px; }
+  nav .nav-links { display:none; }
+  .hero h1 { font-size: 40px; }
+  .hero-audiences { grid-template-columns:1fr; }
+  .panel-intro { grid-template-columns:1fr; gap:12px; }
+  .mat-card.featured { grid-column:span 1; flex-direction:column; }
+  .mat-card.featured .card-cover { width:100%; height:185px; }
+  .cta-inner { flex-direction:column; }
+  .teal-strip-inner { flex-direction:column; gap:20px; }
+}
+
+@media (max-width:768px) {
+  /* Hide wave placeholders */
+  .sp-wave { display: none; }
+  
+  .hero-stats { gap:16px; flex-wrap:wrap; justify-content:center; }
+  .hero-stat .hs-num { font-size:22px; }
+  .hub-search { margin:0 16px 20px; }
+  .suggest-section { padding:32px 20px; }
+  .suggest-box { padding:24px 20px; }
+  .suggest-box .sg-row { flex-direction:column; }
+  .sticky-rec { padding:10px 16px; gap:10px; font-size:12px; }
+  
+  /* Hero */
+  .hero { padding:60px 20px 40px !important; }
+  .hero h1 { font-size:28px !important; }
+  .hero-badge { font-size:11px !important; }
+  
+  /* All inline 2-col and 3-col grids → single column */
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns:1fr !important;
+  }
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns: repeat(3"] {
+    grid-template-columns:1fr !important;
+  }
+  
+  /* Two-panel Academy + Consultant layout → stack */
+  div[style*="grid-template-columns:1fr 1fr;gap:32px"] {
+    grid-template-columns:1fr !important;
+    gap:20px !important;
+  }
+  
+  /* Section padding */
+  section[style*="padding:80px"] {
+    padding:40px 20px !important;
+  }
+  div[style*="padding:64px 60px"] {
+    padding:32px 20px !important;
+  }
+  
+  /* Form inputs — full width */
+  input, select, textarea {
+    font-size:16px !important; /* prevents iOS zoom */
+  }
+  
+  /* Checkbox grids in consultant form */
+  div[style*="grid-template-columns:1fr 1fr;gap:6px"] {
+    grid-template-columns:1fr !important;
+  }
+  
+  /* CTA buttons stack */
+  .cta-btns { min-width:auto !important; }
+  
+  /* Testimonials grid → single column */
+  div[style*="grid-template-columns:repeat(3,1fr);gap:20px"] {
+    grid-template-columns:1fr !important;
+  }
+  div[style*="grid-template-columns:1fr 1fr;gap:20px"] {
+    grid-template-columns:1fr !important;
+  }
+  
+  /* Tab buttons scroll horizontally */
+  div[style*="display:flex;flex-wrap:wrap;gap:10px;margin-bottom"] {
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:8px;
+  }
+  
+  /* Font sizes for mobile readability */
+  h2 { font-size:24px !important; }
+  h3 { font-size:18px !important; }
+  
+  /* Details/summary calendar */
+  details summary { font-size:12px !important; padding:12px 14px !important; }
+  
+  /* Audience buttons */
+  .hero-audiences { gap:8px !important; }
+  .hero-audiences button { font-size:12px !important; padding:10px 16px !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- 🎨 WAVE 1: Hero — prawa strona -->
+  <div class="sp-wave" style="right:0; top:5%; height:85%; width:140px; opacity:0.25; background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.15) 10px, rgba(255,255,255,0.15) 20px); border:2px dashed rgba(255,255,255,0.5); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:white; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 1 — PNG tutaj</span></div>
+  <!-- 🎨 WAVE 2: Hero — lewa strona dół -->
+  <div class="sp-wave" style="left:0; bottom:0; height:50%; width:110px; opacity:0.2; background:repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,0.12) 10px, rgba(255,255,255,0.12) 20px); border:2px dashed rgba(255,255,255,0.4); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:white; font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 2</span></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">Smart Knowledge Hub</div>
+    <h1>The SAP SuccessFactors<br>
+      <span class="accent">knowledge base</span><br>
+      built from <span class="accent-o">real projects.</span>
+    </h1>
+    <p class="hero-sub">Practical SAP SuccessFactors resources built from real implementation experience — free materials and premium content for those who want to go deeper. Choose your profile below.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hs-num"><span class="counter" data-target="16">0</span><span class="hs-plus">+</span></div><div class="hs-label">Resources</div></div>
+      <div class="hero-stat"><div class="hs-num"><span class="counter" data-target="3">0</span></div><div class="hs-label">Audience paths</div></div>
+      <div class="hero-stat"><div class="hs-num"><span class="counter" data-target="120">0</span><span class="hs-plus">+</span></div><div class="hs-label">Pages of guides</div></div>
+      <div class="hero-stat"><div class="hs-num"><span class="counter" data-target="5">0</span></div><div class="hs-label">Interactive tools</div></div>
+    </div>
+
+    <div class="hero-audiences">
+      <div class="ac ac-t" onclick="scrollToPanelAndSwitch('individuals')">
+        <div class="ac-icon">🎯</div>
+        <div class="ac-lbl">For Individuals</div>
+        <div class="ac-title">SAP SF Consultants &amp; Candidates</div>
+        <div class="ac-desc">Career paths, certification guides and deep dives into each SF module.</div>
+        <div class="ac-arrow">Explore resources →</div>
+      </div>
+      <div class="ac ac-o" onclick="scrollToPanelAndSwitch('companies')">
+        <div class="ac-icon">🏢</div>
+        <div class="ac-lbl">For Companies</div>
+        <div class="ac-title">Group Training &amp; Team Building</div>
+        <div class="ac-desc">Roadmaps, role frameworks and training strategies for SF teams.</div>
+        <div class="ac-arrow">Explore resources →</div>
+      </div>
+      <div class="ac ac-b" onclick="scrollToPanelAndSwitch('implementers')">
+        <div class="ac-icon">⚙️</div>
+        <div class="ac-lbl">For Companies Implementing SF</div>
+        <div class="ac-title">SF/HRIS Implementation Projects</div>
+        <div class="ac-desc">Avoid the costliest mistakes. Get the right people and expertise on your side.</div>
+        <div class="ac-arrow">Explore resources →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE: dark hero → off-white panels -->
+<div class="wd" style="background:#1b2a4a;">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 L0,30 Q180,60 360,30 Q540,0 720,30 Q900,60 1080,30 Q1260,0 1440,30 L1440,60 L0,60 Z" fill="#f7f7f5"></path>
+  </svg>
+</div>
+
+<!-- PANELS -->
+<div class="panels-wrapper" id="panels-anchor">
+
+  <!-- SEARCH -->
+  <div class="hub-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="hubSearch" placeholder="Search materials — e.g. 'certification', 'go-live', 'training ROI'..." oninput="filterCards()">
+    <span class="search-count" id="searchCount"></span>
+  </div>
+
+  <!-- PANEL 1: INDIVIDUALS / NAVY -->
+  <div id="panel-individuals" class="aud-panel active">
+    <div class="panel-intro reveal">
+      <h2><strong style="color:#1b2a4a">Build your SF career</strong> with practical knowledge</h2>
+      <p>Whether you're starting your SAP SuccessFactors journey or preparing for certification — these materials give you practical knowledge that courses alone can't provide. Written by consultants working on real projects.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="mat-card featured reveal">
+        <div class="card-cover cover-navy">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Career Guide</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">SF Certification · For Individuals</div><div class="cover-title">Why SF Certification Changes Your <em>Career</em> — and Why <em>How</em> You Get It Matters</div></div>
+        </div>
+        <div class="card-body">
+          <h3>Why SF Certification Changes Your Career — and Why How You Get It Matters</h3>
+          <p>The honest case for pursuing SF certification — and why the path you choose (self-study vs. live training with practitioners) determines not just whether you pass, but what you can actually do after.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_WhyCertification_CareerGuide.pdf" class="dl-btn dl-btn-navy" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card reveal">
+        <div class="card-cover cover-navy">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Reference</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">SAP SuccessFactors</div><div class="cover-title">SF Glossary: <em>50 Terms</em> You Need to Know</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Glossary: 50 Terms You Need to Know</h3>
+          <p>The essential SAP SuccessFactors vocabulary — from core architecture to configuration concepts. What each term means, why it matters, and how it's used on a real project.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_Glossary_50Terms.pdf" class="dl-btn dl-btn-navy" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card reveal">
+        <div class="card-cover cover-navy">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Roadmap</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">SF Career Path</div><div class="cover-title">From Beginner to Certified SF Consultant: Your <em>Career Roadmap</em></div></div>
+        </div>
+        <div class="card-body">
+          <h3>From Beginner to Certified SF Consultant: Career Roadmap</h3>
+          <p>5 stages, real timelines, honest salary ranges. The skills, certifications, and decisions that matter most — based on actual SF career paths, not theory.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_CareerRoadmap_BeginnerToCertified.pdf" class="dl-btn dl-btn-navy" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('How to Get Your First Job as an SF Consultant')">
+        <div class="card-cover cover-navy">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Career · First Role</div><div class="cover-title">How to Get Your <em>First Job</em> as an SF Consultant</div></div>
+        </div>
+        <div class="card-body">
+          <h3>How to Get Your First Job as an SF Consultant</h3>
+          <p>CV, LinkedIn, job search strategy and interview preparation — the practical guide to landing your first SAP SuccessFactors role after certification.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-navy" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('Changes in SAP SF Exams & Certifications 2025-2026')">
+        <div class="card-cover cover-navy">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Certification · 2025-2026</div><div class="cover-title">Changes in SAP SF <em>Exams &amp; Certifications</em> 2025–2026</div></div>
+        </div>
+        <div class="card-body">
+          <h3>Changes in SAP SF Exams & Certifications 2025–2026</h3>
+          <p>Performance-based tasks, open-book format, SAP Joule AI access — everything you need to know about the new certification model. Updated March 2026.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-navy" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- PANEL 2: COMPANIES / ORANGE -->
+  <div id="panel-companies" class="aud-panel">
+    <div class="panel-intro reveal">
+      <h2><strong style="color:#d4611e">Train your team</strong> on SAP SuccessFactors</h2>
+      <p>Want to build internal SAP SuccessFactors competence in your organisation? These materials help you build the business case, plan the training program, and measure real results — before you commit to a programme.</p>
+    </div>
+
+    <!-- ⚡ INTERACTIVE: Mini ROI Calculator -->
+    <div class="tool-teaser reveal">
+      <div class="tool-header">
+        <div class="tool-icon">📊</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;"><span class="tool-title">Quick ROI Estimate</span><span class="tool-badge">Interactive</span></div>
+          <div class="tool-desc" style="margin:0;">See how fast SF training pays for itself — in 30 seconds</div>
+        </div>
+      </div>
+      <div class="tool-inputs">
+        <div class="tool-field">
+          <label>Consultant day rate (€)</label>
+          <input type="number" id="roi-rate" placeholder="800" value="800">
+          <div class="hint">What you pay per external consultant day</div>
+        </div>
+        <div class="tool-field">
+          <label>Days / month external</label>
+          <input type="number" id="roi-days" placeholder="3" value="3">
+          <div class="hint">How often you call them now</div>
+        </div>
+        <div class="tool-field">
+          <label>Reduction after training (%)</label>
+          <input type="number" id="roi-reduction" placeholder="60" value="60" min="0" max="100">
+          <div class="hint">Conservative: 50–70%</div>
+        </div>
+      </div>
+      <button onclick="calcROI()" style="padding:11px 28px;border:none;border-radius:10px;background:var(--orange);color:white;font-family:var(--font);font-size:13px;font-weight:800;cursor:pointer;margin-bottom:14px;">Calculate →</button>
+      <div class="tool-result" id="roi-result">
+        <div class="tr-label">Estimated annual saving</div>
+        <div class="tr-value" id="roi-value">€0</div>
+        <div class="tr-sub" id="roi-sub"></div>
+      </div>
+      <div class="tool-cta" onclick="openRegModal('SF Training ROI Calculator — Full Version')">
+        <div style="font-size:20px;">📋</div>
+        <div>
+          <div class="tc-text">Want the full calculator? 5 cost categories, payback period, presentation-ready →</div>
+          <div class="tc-sub">Register to download the complete ROI Calculator PDF</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚡ INTERACTIVE: Quick Skills Scan -->
+    <div class="tool-teaser reveal">
+      <div class="tool-header">
+        <div class="tool-icon">🔍</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;"><span class="tool-title">Quick Skills Scan</span><span class="tool-badge">Interactive</span></div>
+          <div class="tool-desc" style="margin:0;">5 questions — find out if your team can own SF independently</div>
+        </div>
+      </div>
+      <div id="scan-questions">
+        <div class="scan-q" data-area="EC Core Knowledge">
+          <div class="scan-q-text">1. Can someone on your team explain EC Foundation Objects, effective dating, and the data model?</div>
+          <div class="scan-opts">
+            <div class="scan-opt" onclick="scanSelect(this,0)">No</div>
+            <div class="scan-opt" onclick="scanSelect(this,1)">Partially</div>
+            <div class="scan-opt" onclick="scanSelect(this,2)">Yes</div>
+          </div>
+        </div>
+        <div class="scan-q" data-area="Configuration">
+          <div class="scan-q-text">2. Can your team create Business Rules, modify Workflows, and configure Permissions without external help?</div>
+          <div class="scan-opts">
+            <div class="scan-opt" onclick="scanSelect(this,0)">No</div>
+            <div class="scan-opt" onclick="scanSelect(this,1)">Partially</div>
+            <div class="scan-opt" onclick="scanSelect(this,2)">Yes</div>
+          </div>
+        </div>
+        <div class="scan-q" data-area="Integration">
+          <div class="scan-q-text">3. Can your team troubleshoot a failed integration and perform data imports independently?</div>
+          <div class="scan-opts">
+            <div class="scan-opt" onclick="scanSelect(this,0)">No</div>
+            <div class="scan-opt" onclick="scanSelect(this,1)">Partially</div>
+            <div class="scan-opt" onclick="scanSelect(this,2)">Yes</div>
+          </div>
+        </div>
+        <div class="scan-q" data-area="Releases">
+          <div class="scan-q-text">4. Does your team review SAP quarterly releases and test impact in Preview tenant?</div>
+          <div class="scan-opts">
+            <div class="scan-opt" onclick="scanSelect(this,0)">No</div>
+            <div class="scan-opt" onclick="scanSelect(this,1)">Sometimes</div>
+            <div class="scan-opt" onclick="scanSelect(this,2)">Every quarter</div>
+          </div>
+        </div>
+        <div class="scan-q" data-area="Process Knowledge">
+          <div class="scan-q-text">5. Can your team translate a business requirement into an SF configuration approach?</div>
+          <div class="scan-opts">
+            <div class="scan-opt" onclick="scanSelect(this,0)">No</div>
+            <div class="scan-opt" onclick="scanSelect(this,1)">With guidance</div>
+            <div class="scan-opt" onclick="scanSelect(this,2)">Independently</div>
+          </div>
+        </div>
+      </div>
+      <button onclick="calcScan()" id="scan-btn" style="padding:11px 28px;border:none;border-radius:10px;background:var(--orange);color:white;font-family:var(--font);font-size:13px;font-weight:800;cursor:pointer;margin-bottom:14px;opacity:0.4;pointer-events:none;">See Results →</button>
+      <div class="tool-result" id="scan-result">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:10px;">
+          <div>
+            <div class="tr-label">Your team readiness score</div>
+            <div class="tr-value" id="scan-score">0 / 10</div>
+          </div>
+          <div style="flex:1;">
+            <div class="scan-bar"><div class="scan-bar-fill" id="scan-bar" style="width:0%;background:var(--orange);"></div></div>
+          </div>
+        </div>
+        <div id="scan-verdict" style="font-size:12px;font-weight:700;margin-bottom:8px;"></div>
+        <div id="scan-gaps" style="font-size:11px;color:var(--gray);line-height:1.6;"></div>
+      </div>
+      <div class="tool-cta" onclick="openRegModal('SF Skills Gap Assessment — Full Version (25 questions)')">
+        <div style="font-size:20px;">📊</div>
+        <div>
+          <div class="tc-text">This was the quick scan. Full assessment: 25 questions, 5 areas, detailed gap report →</div>
+          <div class="tc-sub">Register to download the complete Skills Gap Assessment PDF</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <article class="mat-card featured reveal">
+        <div class="card-cover cover-orange">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Business Case</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">Team Training · For Companies</div><div class="cover-title">Why Training Your <em>SF Team</em> Pays Off — and Answers to Every Doubt</div></div>
+        </div>
+        <div class="card-body">
+          <h3>Why Training Your SF Team Pays Off — Business Case</h3>
+          <p>The business arguments for investing in internal SF competence — and honest answers to the questions your leadership team will ask before approving the budget.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_TrainingBusinessCase.pdf" class="dl-btn dl-btn-orange" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card reveal">
+        <div class="card-cover cover-orange">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Step-by-Step Guide</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">Team Training</div><div class="cover-title">How to Plan SF Team Training <em>Step by Step</em></div></div>
+        </div>
+        <div class="card-body">
+          <h3>How to Plan SF Team Training Step by Step</h3>
+          <p>A practical framework for companies that want their HR and IT teams to genuinely own SAP SuccessFactors — from needs analysis to measuring real adoption.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_TeamTrainingGuide_StepByStep.pdf" class="dl-btn dl-btn-orange" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card reveal">
+        <div class="card-cover cover-orange">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">ROI Calculator</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">Training Investment</div><div class="cover-title">SF Training <em>ROI</em>: How to Calculate the Real Return</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Training ROI Calculator</h3>
+          <p>A practical framework for calculating the return on investment from SF team training — based on real cost categories and measurable outcomes, not marketing claims.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_TrainingROI_Calculator.pdf" class="dl-btn dl-btn-orange" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('SF Skills Gap Assessment — Is Your Team Ready?')">
+        <div class="card-cover cover-orange">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Team Competence</div><div class="cover-title">SF Skills Gap Assessment: Is Your Team <em>Ready</em> to Own the System?</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Skills Gap Assessment</h3>
+          <p>A structured self-assessment across 5 competency areas. Score your team honestly — and find out where training investment will have the highest impact.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-orange" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('What to Expect from SF Training — Buyer's Guide')">
+        <div class="card-cover cover-orange">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Training Options</div><div class="cover-title">What to Expect from SF Team <em>Training</em> — A Buyer's Guide</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Training Buyer's Guide</h3>
+          <p>SAP Learning Hub, independent training providers, implementation partner training, or internal delivery? An honest comparison of your options — what each costs, what each delivers, and how to choose.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-orange" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- PANEL 3: IMPLEMENTERS / BURGUNDY -->
+  <div id="panel-implementers" class="aud-panel">
+    <div class="panel-intro reveal">
+      <h2><strong style="color:#7a2535">Practical resources</strong> for companies running SF implementations</h2>
+      <p>You're in the middle of an SF implementation — or about to start one. These materials help you understand what's happening, what to watch out for, and how to protect your interests. Need experienced SF people in your corner? The Smart People TaaS team and SmartGuard advisory can help.</p>
+    </div>
+    <div class="cards-grid">
+      <article class="mat-card featured reveal">
+        <div class="card-cover cover-burgundy">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Deep Dive</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">Implementation Rescue</div><div class="cover-title">SuccessFactors Project Rescue: <em>5 Critical Errors</em> That Destroy SF Implementations</div></div>
+        </div>
+        <div class="card-body">
+          <h3>Project Rescue: 5 Critical Errors That Destroy SF Implementations</h3>
+          <p>The real reasons SF projects overrun budget and timeline — and what experienced implementation teams do differently from day one.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_ProjectRescue_DeepDive__2_.pdf" class="dl-btn dl-btn-burgundy" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card reveal">
+        <div class="card-cover cover-burgundy">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Audit</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">Pre-Implementation</div><div class="cover-title">SF Readiness Audit <em>2026</em> — Is Your Organization Ready?</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Readiness Audit 2026</h3>
+          <p>A structured self-assessment across 5 critical areas. Score your organization honestly — and find out where you need to focus before signing any implementation contract.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_ReadinessAudit_2026.pdf" class="dl-btn dl-btn-burgundy" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card reveal">
+        <div class="card-cover cover-burgundy">
+          
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="cover-type-pill">Project Guide</span><span class="badge-free">FREE</span></div>
+          <div class="cover-bottom"><div class="cover-module">EC Implementation</div><div class="cover-title">SF Project Timeline: From <em>Kickoff</em> to Go-Live</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Project Timeline: Kickoff to Go-Live</h3>
+          <p>What actually happens at each phase of an SF Employee Central implementation — who does what, what goes wrong, and what you must have completed before moving to the next phase.</p>
+          <div class="card-footer"><a href="https://noniusz-code.github.io/HUB/SF_ProjectTimeline_KickoffToGoLive.pdf" class="dl-btn dl-btn-burgundy" download>↓ Download PDF</a></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('SF Post Go-Live Survival Guide: First 6 Months')">
+        <div class="card-cover cover-burgundy">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Post Go-Live</div><div class="cover-title">SF Post Go-Live <em>Survival Guide</em>: First 6 Months</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Post Go-Live Survival Guide</h3>
+          <p>Go-live is not the finish line. What to expect, what to watch for, and what decisions in the first 6 months determine whether your SF implementation succeeds long-term.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-burgundy" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('20 Questions Before Signing with SF Partner')">
+        <div class="card-cover cover-burgundy">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Partner Selection</div><div class="cover-title">How to Choose an SF Implementation <em>Partner</em> — 20 Questions to Ask</div></div>
+        </div>
+        <div class="card-body">
+          <h3>20 Questions Before Signing with SF Partner</h3>
+          <p>A decision framework for HR and procurement teams evaluating SAP SuccessFactors implementation partners. Based on patterns from real projects — written from the client's perspective.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-burgundy" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+      <article class="mat-card premium reveal" onclick="openRegModal('EC Go-Live Readiness — 47 Technical Checkpoints')">
+        <div class="card-cover cover-burgundy">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">Employee Central</div><div class="cover-title">EC Go-Live Readiness — <em>47 Technical Checkpoints</em></div></div>
+        </div>
+        <div class="card-body">
+          <h3>EC Go-Live Readiness — 47 Technical Checkpoints</h3>
+          <p>Complete pre-go-live verification covering data migration, configuration, permissions, integrations, reporting and operational readiness. Used on live projects.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-burgundy" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Access</span></div>
+        </div>
+      </article>
+      <!-- EBOOK: Premium online resource -->
+      <article class="mat-card premium reveal" onclick="openRegModal('SF Implementation Guide — 27 Chapter E-Book')">
+        <div class="card-cover cover-burgundy" style="background:linear-gradient(160deg, #2D1B1E 0%, #4A1E2E 40%, #2D2530 100%);">
+          <div class="premium-overlay"><div class="premium-lock">🔒</div></div>
+          <div class="cover-header"><span class="cover-logo-text">Smart<span class="sp-accent">People</span></span><span class="badge-premium">🔒 PREMIUM</span></div>
+          <div class="cover-bottom"><div class="cover-module">E-Book · 27 Chapters · Online Access</div><div class="cover-title">SAP SuccessFactors <em>Implementation Guide</em> — The Complete Resource</div></div>
+        </div>
+        <div class="card-body">
+          <h3>SF Implementation Guide — 27 Chapters, From Business Case to Go-Live</h3>
+          <p>The comprehensive guide covering every stage of an SF implementation. Strategy, execution, change management, risks, global rollout, and continuous improvement.</p>
+          <p style="font-size:11px;color:#999;margin-top:6px;">📖 This material is available online only — not as a PDF download. You'll receive login credentials after registration.</p>
+          <div class="card-footer"><span class="dl-btn dl-btn-burgundy" style="background:rgba(255,145,77,0.15);color:#ff914d;border-color:#ff914d;">🔒 Register for Online Access</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- WHY SMART PEOPLE -->
+<section style="background:linear-gradient(160deg,#0f1520 0%,#004165 100%);padding:72px 60px;position:relative;overflow:hidden;">
+
+  <!-- 🎨 WAVE 3: Why Smart People — prawa strona -->
+  <div class="sp-wave" style="right:0; top:0; height:100%; width:140px; opacity:0.25; background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.12) 10px, rgba(255,255,255,0.12) 20px); border:2px dashed rgba(255,255,255,0.4); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:white; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 3 — PNG tutaj</span></div>
+  <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+    <div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;">Why Smart People</div>
+    <h2 style="font-size:clamp(26px,3vw,38px);font-weight:900;color:white;line-height:1.15;margin-bottom:16px;">We don't implement SAP SuccessFactors.<br><span style="color:var(--orange)">We make sure the right people do.</span></h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.6);line-height:1.78;max-width:760px;margin-bottom:52px;">Smart People connects companies and specialists with experienced SF consultants and teams — for projects, training and expert advice.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;">
+        <div style="font-size:22px;margin-bottom:14px;">🏢</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">For Companies</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.75;">Need to staff an implementation, build your team's SF capability, or understand what you're getting into before signing with a vendor? We've been there — we'll help you navigate it.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;">
+        <div style="font-size:22px;margin-bottom:14px;">👤</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">For Individuals</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.75;">Changing careers or looking to break into SAP SuccessFactors? Smart People Academy takes you from zero to certified — with live training, real project context and active consultants as instructors.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px;">
+        <div style="font-size:22px;margin-bottom:14px;">⚙️</div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:10px;">For Companies Implementing SF</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.75;">Running an SF implementation and need the right people on your side? We source experienced consultants fast.</p>
+      </div>
+    </div>
+    <div style="margin-top:44px;text-align:center;">
+      <a href="https://www.linkedin.com/company/smart-people-successfactors/" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);color:white;font-family:var(--font);font-size:13px;font-weight:800;padding:14px 28px;border-radius:50px;text-decoration:none;">
+        <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:white;flex-shrink:0"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+        Follow Smart People on LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- SPLIT SECTION: Training vs Consultant Network -->
+<section id="individuals-split" style="display: block; background: rgb(10, 19, 32); padding: 72px 60px;">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;">
+
+    <!-- LEFT: Training + Enrollment Form -->
+    <div style="background:linear-gradient(145deg,#0d2137 0%,#0a3352 100%);border:1.5px solid rgba(32,162,185,0.3);border-radius:24px;padding:48px;position:relative;overflow:hidden;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(32,162,185,0.15) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;">Smart People Global Academy</div>
+      <h2 style="font-size:clamp(22px,2.4vw,30px);font-weight:900;color:white;line-height:1.2;margin-bottom:16px;">Build your SAP SuccessFactors career — from zero to certified.</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:28px;">Live training with active SF consultants. Small groups, real project context, hands-on system access.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(32,162,185,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">👥</div><span style="font-size:13px;color:rgba(255,255,255,0.8);">Max 8 participants per cohort</span></div>
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(32,162,185,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🖥️</div><span style="font-size:13px;color:rgba(255,255,255,0.8);">Hands-on live SF tenant access throughout the course</span></div>
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(32,162,185,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🏅</div><span style="font-size:13px;color:rgba(255,255,255,0.8);">Prepares you for SAP SF certification exams</span></div>
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(32,162,185,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">📅</div><span style="font-size:13px;color:rgba(255,255,255,0.8);">Multiple start dates throughout the year</span></div>
+      </div>
+      <div style="margin-bottom:28px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Currently available courses</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="background:rgba(32,162,185,0.2);border:1px solid rgba(32,162,185,0.4);color:white;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;">Employee Central</span>
+          <span style="background:rgba(32,162,185,0.2);border:1px solid rgba(32,162,185,0.4);color:white;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;">Recruiting</span>
+          <span style="background:rgba(32,162,185,0.2);border:1px solid rgba(32,162,185,0.4);color:white;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;">Onboarding</span>
+        </div>
+      </div>
+      <div style="margin-bottom:24px;">
+        <details style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;">
+          <summary style="padding:14px 18px;cursor:pointer;font-size:13px;font-weight:700;color:white;list-style:none;display:flex;align-items:center;justify-content:space-between;">
+            <span>📅 Upcoming start dates</span>
+            <span style="font-size:11px;color:var(--teal);font-weight:600;">▼ show dates</span>
+          </summary>
+          <div style="padding:4px 12px 12px 12px;display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:var(--teal);min-width:70px;">6 APR</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Employee Central</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:var(--orange);min-width:70px;">7 APR</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Recruiting</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:var(--teal);min-width:70px;">27 APR</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Employee Central</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:var(--orange);min-width:70px;">28 APR</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Recruiting</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:var(--teal);min-width:70px;">25 MAY</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Employee Central</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:var(--orange);min-width:70px;">26 MAY</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Recruiting</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.03);border-radius:8px;padding:10px 14px;">
+              <div style="font-size:11px;font-weight:800;color:#bc7c85;min-width:70px;">18 JUN</div>
+              <div style="font-size:13px;font-weight:700;color:white;">Onboarding</div>
+            </div>
+          </div>
+        </details>
+      </div>
+      <a href="https://smartpeople.com.pl/akademia-smart-people/" style="display:inline-block;background:var(--teal);color:white;font-family:var(--font);font-size:13px;font-weight:800;padding:13px 26px;border-radius:50px;text-decoration:none;letter-spacing:.5px;margin-bottom:32px;align-self:flex-start;">Enrol Now →</a>
+
+      <!-- Enrollment Form -->
+      <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:28px;margin-top:auto;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Enrol in a course</div>
+        <div id="enrol-form-wrap">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Full Name *</label><input id="en-name" type="text" placeholder="Anna Kowalska" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Email *</label><input id="en-email" type="email" placeholder="anna@example.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Phone *</label><input id="en-phone" type="tel" placeholder="+48 000 000 000" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Course *</label><select id="en-course" style="width:100%;box-sizing:border-box;background:rgba(0,60,80,0.35);border:1.5px solid rgba(255,255,255,0.3);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"><option value="">— select —</option><option>Employee Central</option><option>Recruiting</option><option>Onboarding</option></select></div>
+          </div>
+          <div style="margin-bottom:10px;"><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Preferred Start Date *</label><select id="en-date" style="width:100%;box-sizing:border-box;background:rgba(0,60,80,0.35);border:1.5px solid rgba(255,255,255,0.3);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"><option value="">— select —</option><option>6 April — Employee Central</option><option>7 April — Recruiting</option><option>27 April — Employee Central</option><option>28 April — Recruiting</option><option>25 May — Employee Central</option><option>26 May — Recruiting</option><option>18 June — Onboarding</option></select></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Street Address *</label><input id="en-street" type="text" placeholder="ul. Przykładowa 1" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">City *</label><input id="en-city" type="text" placeholder="Warszawa" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Postal Code *</label><input id="en-postal" type="text" placeholder="00-000" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+            <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Country *</label><input id="en-country" type="text" placeholder="Poland" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+          </div>
+          <div style="margin-bottom:14px;"><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Comments / Promo Code (optional)</label><textarea id="en-comment" rows="2" placeholder="Any questions or promo code..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;resize:vertical;"></textarea></div>
+          <div style="margin-bottom:14px;display:flex;flex-direction:column;gap:9px;">
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><input id="en-tc" type="checkbox" style="accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:2px;"><span style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;">* I accept the <a href="https://smartpeople.com.pl/regulamin/" target="_blank" style="color:var(--teal);">Terms &amp; Conditions of Smart People Global Academy</a></span></label>
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><input id="en-pp" type="checkbox" style="accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:2px;"><span style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;">* I accept the <a href="https://smartpeople.com.pl/polityka-prywatnosci/" target="_blank" style="color:var(--teal);">Privacy Policy</a></span></label>
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><input id="en-withdraw" type="checkbox" style="accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:2px;"><span style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;">* I consent to the course being made available before the expiration of 14 days and acknowledge that once I begin access to the course, I lose the right to withdraw from the contract</span></label>
+            <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><input id="en-marketing" type="checkbox" style="accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:2px;"><span style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">I consent to receive marketing information about Smart People Global Academy courses (optional)</span></label>
+          </div>
+          <div id="en-msg" style="display:none;padding:10px 14px;border-radius:10px;font-size:12px;margin-bottom:12px;"></div>
+          <button onclick="submitEnrolForm()" style="background:var(--teal);color:white;font-family:var(--font);font-size:13px;font-weight:800;padding:13px 28px;border-radius:50px;border:none;cursor:pointer;letter-spacing:.5px;width:100%;">Send Enrolment Request →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Consultant Form -->
+    <div style="background:linear-gradient(145deg,#0d6b7a 0%,#0a5266 100%);border:1.5px solid rgba(255,255,255,0.2);border-radius:24px;padding:48px;position:relative;overflow:hidden;display:flex;flex-direction:column;">
+      <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;">SF Consultant Network</div>
+      <h2 style="font-size:clamp(22px,2.4vw,30px);font-weight:900;color:white;line-height:1.2;margin-bottom:16px;">You know SAP SuccessFactors.<br>We know who needs you.</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:28px;">Experienced SF consultant looking for your next project? Tell us about yourself — we'll match you with the right opportunity and make the introduction fast.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🌍</div><span style="font-size:13px;color:rgba(255,255,255,0.85);">Projects across Europe and beyond</span></div>
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🤝</div><span style="font-size:13px;color:rgba(255,255,255,0.85);">We handle the introduction — you focus on the work</span></div>
+        <div style="display:flex;align-items:center;gap:14px;"><div style="width:34px;height:34px;background:rgba(255,255,255,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;">🔄</div><span style="font-size:13px;color:rgba(255,255,255,0.85);">Contract, part-time or full engagement — your choice</span></div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:28px;margin-top:auto;">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Send us your profile</div>
+        <div id="consultant-form-wrap2">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Full Name *</label><input id="cf2-name" type="text" placeholder="Anna Kowalska" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+          <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Email *</label><input id="cf2-email" type="email" placeholder="anna@example.com" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+        </div>
+        <div style="margin-bottom:10px;"><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">LinkedIn Profile URL</label><input id="cf2-linkedin" type="url" placeholder="https://linkedin.com/in/..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">SF Experience *</label><select id="cf2-exp" style="width:100%;box-sizing:border-box;background:rgba(0,60,80,0.35);border:1.5px solid rgba(255,255,255,0.3);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"><option value="">— select —</option><option>Less than 1 year</option><option>1–2 years</option><option>3–5 years</option><option>5–10 years</option><option>10+ years</option></select></div>
+          <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Availability *</label><select id="cf2-avail" style="width:100%;box-sizing:border-box;background:rgba(0,60,80,0.35);border:1.5px solid rgba(255,255,255,0.3);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"><option value="">— select —</option><option>Full-time (5 days/week)</option><option>4 days/week</option><option>3 days/week</option><option>2 days/week</option><option>Advisory only</option><option>Flexible — let's talk</option></select></div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">SF Certifications held (select all that apply)</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;background:rgba(10,20,40,0.5);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 14px;">
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Employee Central (EC)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Employee Central (EC)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Employee Central Payroll" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Employee Central Payroll</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Recruiting (RCM)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Recruiting (RCM)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Onboarding (ONB)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Onboarding (ONB)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Performance &amp; Goals (PMGM)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Performance &amp; Goals (PMGM)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Succession &amp; Development" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Succession &amp; Development</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Learning (LMS)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Learning (LMS)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Compensation" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Compensation</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Variable Pay" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Variable Pay</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Workforce Analytics" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Workforce Analytics</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="Integration (BTP / CPI)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">Integration (BTP / CPI)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="People Analytics" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">People Analytics</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="SAP HCM (on-premise)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">SAP HCM (on-premise)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="SAP Payroll (on-premise)" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">SAP Payroll (on-premise)</span></label>
+            <label style="display:flex;gap:8px;align-items:center;cursor:pointer;"><input type="checkbox" class="cf2-cert" value="SAP BTP / Integration Suite" style="accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;"><span style="font-size:12px;color:rgba(255,255,255,0.7);">SAP BTP / Integration Suite</span></label>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Location</label><input id="cf2-location" type="text" placeholder="e.g. Poland, UAE..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+          <div><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Work Preference</label><select id="cf2-mode" style="width:100%;box-sizing:border-box;background:rgba(0,60,80,0.35);border:1.5px solid rgba(255,255,255,0.3);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"><option value="">— select —</option><option>Remote only</option><option>Hybrid</option><option>On-site</option><option>Open to anything</option></select></div>
+        </div>
+        <div style="margin-bottom:10px;"><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Working Languages</label><input id="cf2-lang" type="text" placeholder="e.g. English, Polish, German..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;"></div>
+        <div style="margin-bottom:14px;"><label style="display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;">Anything else?</label><textarea id="cf2-note" rows="2" placeholder="Recent projects, specialisations, notice period..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:10px;padding:10px 13px;color:white;font-family:var(--font);font-size:13px;outline:none;resize:vertical;"></textarea></div>
+        <div style="margin-bottom:14px;display:flex;flex-direction:column;gap:9px;">
+          <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><input id="cf2-gdpr1" type="checkbox" style="accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:2px;"><span style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;">* I consent to Smart People processing my personal data for the purpose of matching me with project opportunities. <a href="https://smartpeople.com.pl/polityka-prywatnosci/" target="_blank" style="color:var(--teal);">Privacy Policy →</a></span></label>
+          <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><input id="cf2-gdpr2" type="checkbox" style="accent-color:var(--teal);width:15px;height:15px;flex-shrink:0;margin-top:2px;"><span style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">I agree to receive information about project opportunities and Smart People services (optional)</span></label>
+        </div>
+        <div id="cf2-msg" style="display:none;padding:10px 14px;border-radius:10px;font-size:12px;margin-bottom:12px;"></div>
+        <button onclick="submitConsultantForm2()" style="background:#1b2a4a;color:white;font-family:var(--font);font-size:13px;font-weight:800;padding:13px 28px;border-radius:50px;border:none;cursor:pointer;letter-spacing:.5px;width:100%;margin-top:auto;">Send My Profile →</button>
+        <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:10px;text-align:center;">We'll get back to you within 2 business days.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+async function submitEnrolForm() {
+  const name = document.getElementById('en-name').value.trim();
+  const email = document.getElementById('en-email').value.trim();
+  const phone = document.getElementById('en-phone').value.trim();
+  const course = document.getElementById('en-course').value;
+  const date = document.getElementById('en-date').value.trim();
+  const street = document.getElementById('en-street').value.trim();
+  const city = document.getElementById('en-city').value.trim();
+  const postal = document.getElementById('en-postal').value.trim();
+  const country = document.getElementById('en-country').value.trim();
+  const tc = document.getElementById('en-tc').checked;
+  const pp = document.getElementById('en-pp').checked;
+  const withdraw = document.getElementById('en-withdraw').checked;
+  const msg = document.getElementById('en-msg');
+  if (!name || !email || !phone || !course || !date || !street || !city || !postal || !country) {
+    msg.style.display='block'; msg.style.background='rgba(255,80,80,0.15)'; msg.style.border='1px solid rgba(255,80,80,0.3)'; msg.style.color='rgba(255,180,180,1)';
+    msg.textContent='Please fill in all required fields.'; return;
+  }
+  if (!tc || !pp || !withdraw) {
+    msg.style.display='block'; msg.style.background='rgba(255,80,80,0.15)'; msg.style.border='1px solid rgba(255,80,80,0.3)'; msg.style.color='rgba(255,180,180,1)';
+    msg.textContent='Please accept all required consents.'; return;
+  }
+  const btn = document.querySelector('#enrol-form-wrap button');
+  btn.textContent='Sending...'; btn.disabled=true;
+  const comment = document.getElementById('en-comment').value.trim();
+  const marketing = document.getElementById('en-marketing').checked;
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_ENROL_FORM_ID', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({name,email,phone,course,preferred_date:date,address:street,city,postal_code:postal,country,comments:comment,marketing_consent:marketing?'yes':'no'})
+    });
+    if (res.ok) {
+      document.getElementById('enrol-form-wrap').innerHTML='<div style="background:rgba(32,162,185,0.12);border:1.5px solid rgba(32,162,185,0.35);border-radius:16px;padding:36px;text-align:center;"><div style="font-size:36px;margin-bottom:12px;">✅</div><h3 style="color:white;margin-bottom:8px;">Thank you!</h3><p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;">Your enrolment request has been received. We\'ll confirm your place within 2 business days.</p></div>';
+    } else { throw new Error(); }
+  } catch(e) {
+    btn.textContent='Send Enrolment Request →'; btn.disabled=false;
+    msg.style.display='block'; msg.style.background='rgba(255,80,80,0.15)'; msg.style.border='1px solid rgba(255,80,80,0.3)'; msg.style.color='rgba(255,180,180,1)';
+    msg.textContent='Something went wrong. Please try again or email kontakt@smartpeople.com.pl';
+  }
+}
+async function submitConsultantForm2() {
+  const name = document.getElementById('cf2-name').value.trim();
+  const email = document.getElementById('cf2-email').value.trim();
+  const exp = document.getElementById('cf2-exp').value;
+  const avail = document.getElementById('cf2-avail').value;
+  const gdpr1 = document.getElementById('cf2-gdpr1').checked;
+  const msg = document.getElementById('cf2-msg');
+  if (!name || !email || !exp || !avail) {
+    msg.style.display='block'; msg.style.background='rgba(255,80,80,0.15)'; msg.style.border='1px solid rgba(255,80,80,0.3)'; msg.style.color='rgba(255,180,180,1)';
+    msg.textContent='Please fill in all required fields (*).'; return;
+  }
+  if (!gdpr1) {
+    msg.style.display='block'; msg.style.background='rgba(255,80,80,0.15)'; msg.style.border='1px solid rgba(255,80,80,0.3)'; msg.style.color='rgba(255,180,180,1)';
+    msg.textContent='Please accept the required consent.'; return;
+  }
+  const certs = [...document.querySelectorAll('.cf2-cert:checked')].map(c=>c.value).join(', ') || 'none';
+  const linkedin = document.getElementById('cf2-linkedin').value.trim();
+  const location = document.getElementById('cf2-location').value.trim();
+  const mode = document.getElementById('cf2-mode').value;
+  const lang = document.getElementById('cf2-lang').value.trim();
+  const note = document.getElementById('cf2-note').value.trim();
+  const gdpr2 = document.getElementById('cf2-gdpr2').checked;
+  const btn = document.querySelector('#consultant-form-wrap2 button');
+  btn.textContent='Sending...'; btn.disabled=true;
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_CONSULTANT_FORM_ID', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({name,email,linkedin,experience:exp,certifications:certs,availability:avail,work_mode:mode,location,languages:lang,note,marketing_consent:gdpr2?'yes':'no'})
+    });
+    if (res.ok) {
+      document.getElementById('consultant-form-wrap2').innerHTML='<div style="background:rgba(32,162,185,0.12);border:1.5px solid rgba(32,162,185,0.35);border-radius:16px;padding:36px;text-align:center;"><div style="font-size:36px;margin-bottom:12px;">✅</div><h3 style="color:white;margin-bottom:8px;">Profile received — thank you!</h3><p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;">We\'ll review your details and get back to you within 2 business days.</p></div>';
+    } else { throw new Error(); }
+  } catch(e) {
+    btn.textContent='Send My Profile →'; btn.disabled=false;
+    msg.style.display='block'; msg.style.background='rgba(255,80,80,0.15)'; msg.style.border='1px solid rgba(255,80,80,0.3)'; msg.style.color='rgba(255,180,180,1)';
+    msg.textContent='Something went wrong. Please try again or email kontakt@smartpeople.com.pl';
+  }
+}
+</script>
+
+<!-- BLOG LATEST -->
+<section style="background: var(--off-white); padding: 64px 60px; display: none;">
+  <div style="max-width:1260px;margin:0 auto;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;">
+      <div>
+        <div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">Latest from Smart People</div>
+        <h2 style="font-size:28px;font-weight:900;color:var(--dark);">Fresh from the Blog</h2>
+      </div>
+      <a href="https://smartpeople.com.pl/blog/" style="font-size:12px;font-weight:800;color:var(--teal);letter-spacing:1px;text-transform:uppercase;">All Articles →</a>
+    </div>
+    <div id="blog-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;">
+      <div style="background:white;border-radius:14px;padding:28px;border:1.5px solid var(--gray-line);color:var(--gray);font-size:13px;">Loading latest articles…</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner cta-banner-navy" id="cta-individuals" style="display:none!important;"></section>
+
+<!-- ACADEMY DEEP SECTION -->
+<div id="academy-deep" style="display: block;">
+  <section style="background:#0a1320;padding:72px 60px;position:relative;overflow:hidden;">
+
+    <!-- 🎨 WAVE 4: Academy — lewa strona -->
+    <div class="sp-wave" style="left:0; top:10%; height:40%; width:120px; opacity:0.2; background:repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(255,255,255,0.12) 10px, rgba(255,255,255,0.12) 20px); border:2px dashed rgba(255,255,255,0.4); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:white; font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 4</span></div>
+    <!-- 🎨 WAVE 5: Academy — prawa strona (teal) -->
+    <div class="sp-wave" style="right:0; top:55%; height:40%; width:120px; opacity:0.25; background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(32,162,185,0.15) 10px, rgba(32,162,185,0.15) 20px); border:2px dashed rgba(32,162,185,0.5); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:var(--teal); font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 5 teal</span></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+      <div style="text-align:center;margin-bottom:56px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;">Why Smart People Global Academy</div>
+        <h2 style="font-size:clamp(28px,3.5vw,42px);font-weight:900;color:white;line-height:1.15;margin-bottom:16px;">Not just another SF course.<br><span style="color:var(--orange)">Built by people who live it.</span></h2>
+        <p style="font-size:16px;color:rgba(255,255,255,0.55);max-width:640px;margin:0 auto;line-height:1.75;">Our instructors are active SAP SuccessFactors consultants running live projects across Europe. When they teach — they teach from last week's client, not last decade's textbook.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="font-size:24px;margin-bottom:12px;">🎯</div><h3 style="font-size:15px;font-weight:800;color:white;margin-bottom:8px;">Built for the new SAP exam</h3><p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">SAP changed its certification requirements. Our programme is fully adapted — so you prepare for the exam as it actually is today, not how it used to be.</p></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="font-size:24px;margin-bottom:12px;">🖥️</div><h3 style="font-size:15px;font-weight:800;color:white;margin-bottom:8px;">Hands-on from day one</h3><p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Access to a live SAP demo instance throughout the entire course. You configure, you click, you make mistakes — and you learn. No slides-only theory.</p></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="font-size:24px;margin-bottom:12px;">👥</div><h3 style="font-size:15px;font-weight:800;color:white;margin-bottom:8px;">Small groups, real interaction</h3><p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Max 8 participants per cohort. Live, interactive online sessions — not a webinar you watch half-asleep. Ask questions, get answers in real time.</p></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="font-size:24px;margin-bottom:12px;">🎬</div><h3 style="font-size:15px;font-weight:800;color:white;margin-bottom:8px;">On-demand recordings</h3><p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Every session recorded. Review complex topics at your own pace, revisit configuration steps, or catch up if life gets in the way.</p></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="font-size:24px;margin-bottom:12px;">🏅</div><h3 style="font-size:15px;font-weight:800;color:white;margin-bottom:8px;">Certification support</h3><p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Exam simulations, structured preparation and personal guidance. We don't just teach the content — we help you pass.</p></div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="font-size:24px;margin-bottom:12px;">🚀</div><h3 style="font-size:15px;font-weight:800;color:white;margin-bottom:8px;">Career launch support</h3><p style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Bonus webinar on landing your first SF project, direct access to our consultant network, and job search guidance — because the certificate is just the beginning.</p></div>
+      </div>
+      <div style="margin-bottom:64px;"><div style="text-align:center;margin-bottom:32px;"><div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">How we compare</div><h2 style="font-size:clamp(22px,2.8vw,32px);font-weight:900;color:white;">Smart People Academy vs SAP Learning Hub</h2></div>
+        <div style="border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);"><table style="width:100%;border-collapse:collapse;font-family:var(--font);"><thead><tr style="background:rgba(255,255,255,0.05);"><th style="padding:18px 24px;text-align:left;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);width:35%;">Feature</th><th style="padding:18px 24px;text-align:center;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);width:32.5%;">SAP Learning Hub</th><th style="padding:18px 24px;text-align:center;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--teal);width:32.5%;">Smart People Academy</th></tr></thead><tbody>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Training Materials</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.55);">E-books, guides</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">Detailed presentations &amp; exercises</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Session Recordings</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.55);">Not available</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">On-demand access ✓</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Exam Simulations</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.55);">General simulations</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">Certification exam simulations ✓</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Learning Mode</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.55);">Self-paced, live</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">Instructor-led, interactive ✓</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);background:rgba(32,162,185,0.08);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Real Business Cases</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.55);">Limited / generic</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">From live TaaS projects ✦</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Expert Community</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.55);">Learning rooms</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">Personalized interaction ✓</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Certification Assist.</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);">No</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">Yes ✓</td></tr>
+          <tr style="border-top:1px solid rgba(255,255,255,0.06);"><td style="padding:16px 24px;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.5px;">Job Search Support</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.4);">No</td><td style="padding:16px 24px;text-align:center;font-size:13px;color:var(--teal);font-weight:700;">Yes ✓</td></tr>
+        </tbody></table></div>
+      </div>
+      <div style="margin-bottom:64px;"><div style="text-align:center;margin-bottom:36px;"><div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">What our graduates say</div><h2 style="font-size:clamp(22px,2.8vw,32px);font-weight:900;color:white;">Real people. Real results.</h2></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="color:var(--teal);font-size:20px;margin-bottom:12px;">★★★★★</div><p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:16px;font-style:italic;">"I have participated in the SuccessFactors ECP course. I highly recommend it as very good prepared. With many possibilities to test and ask questions to trainer. What I like is small group of participants which allows better training possibilities. The course itself gave me a good insight knowledge of SF."</p><div style="font-size:12px;font-weight:800;color:white;">Dorota Szydłowska</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">ECP Course Graduate</div></div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="color:var(--teal);font-size:20px;margin-bottom:12px;">★★★★★</div><p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:16px;font-style:italic;">"I was looking for a place that combines high-quality content with genuine professionalism and support — and that is exactly what I found at the Academy. I recommend it with complete confidence, because the trainings are delivered with great care for quality, practical application, and an atmosphere that truly fosters growth."</p><div style="font-size:12px;font-weight:800;color:white;">Barbara Wicha</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Academy Graduate</div></div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="color:var(--teal);font-size:20px;margin-bottom:12px;">★★★★★</div><p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:16px;font-style:italic;">"I have participated in the SuccessFactors Employee Central Course and it was really positive experience. The great value of this course was the real demo application where I could practice the knowledge gained during the course. I recommend it to everyone who wants to get more knowledge about SuccessFactors and put it into practice."</p><div style="font-size:12px;font-weight:800;color:white;">Jarosław Maliniak</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">EC Course Graduate</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="color:var(--teal);font-size:20px;margin-bottom:12px;">★★★★★</div><p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:16px;font-style:italic;">"While analysing the market and looking for ways to increase my professional value, I was searching for a place that would allow me to genuinely deepen my knowledge of SAP EC. At the Smart People Academy I found exactly what I needed — professionalism and great energy. I recommend it to anyone who values concrete, in-demand expert knowledge."</p><div style="font-size:12px;font-weight:800;color:white;">Magda Juchiewicz</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">EC Course Graduate</div></div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;"><div style="color:var(--teal);font-size:20px;margin-bottom:12px;">★★★★★</div><p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.75;margin-bottom:16px;font-style:italic;">"What sets this program apart is the live access to demo systems throughout the entire course. I could practice configurations in real-time while learning, which made everything click. The trainer was always available to answer questions, and the community of students was incredibly supportive."</p><div style="font-size:12px;font-weight:800;color:white;">Aleksandra Silska</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Academy Graduate</div></div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#0f1520 0%,#004165 100%);border-radius:24px;padding:64px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 80% 20%, rgba(32,162,185,0.2) 0%, transparent 60%),radial-gradient(ellipse 30% 40% at 10% 80%, rgba(255,145,77,0.1) 0%, transparent 60%);pointer-events:none;"></div>
+        <div style="position:relative;z-index:2;">
+          <div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;">Your next move</div>
+          <h2 style="font-size:clamp(26px,3.5vw,42px);font-weight:900;color:white;line-height:1.15;margin-bottom:16px;">The SF market is growing.<br><span style="color:var(--orange)">Your moment is now.</span></h2>
+          <p style="font-size:16px;color:rgba(255,255,255,0.55);margin-bottom:40px;line-height:1.78;max-width:560px;margin-left:auto;margin-right:auto;">Every cohort is small. Every seat fills up. If you've been thinking about it — this is the sign to stop thinking and start doing.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="https://smartpeople.com.pl/en/individual-training/" style="background:var(--teal);color:white;font-family:var(--font);font-size:14px;font-weight:800;padding:16px 32px;border-radius:50px;letter-spacing:.5px;text-decoration:none;">Choose Your Course →</a>
+            <a href="https://smartpeople.com.pl/kontakt/" style="border:1.5px solid rgba(255,255,255,0.3);color:white;font-family:var(--font);font-size:14px;font-weight:800;padding:16px 32px;border-radius:50px;letter-spacing:.5px;text-decoration:none;">Ask a Question</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA: orange – group training -->
+<section class="cta-banner cta-banner-orange" id="cta-companies" style="display:none;position:relative;overflow:hidden;">
+
+  <!-- 🎨 WAVE 6: CTA Orange — prawa strona -->
+  <div class="sp-wave" style="right:0; top:0; height:100%; width:130px; opacity:0.3; background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.15) 10px, rgba(255,255,255,0.15) 20px); border:2px dashed rgba(255,255,255,0.5); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:white; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 6</span></div>
+  <div class="cta-inner"><div><h2>Build your team's SAP SuccessFactors capability.</h2><p>Smart People Global Academy offers group training programmes tailored for companies — from onboarding new SF teams to upskilling existing ones. Role-based, hands-on, built for the real project environment.</p></div><div class="cta-btns"><a href="https://smartpeople.com.pl/akademia-smart-people/" class="btn-white btn-white-orange">View Group Training Options →</a><a href="https://smartpeople.com.pl/kontakt/" class="btn-ghost">Talk to Our Team</a></div></div>
+</section>
+
+<!-- CTA: burgundy – TaaS + Embedded Advisor -->
+<section class="cta-banner cta-banner-burgundy" id="cta-implementers" style="display:none;position:relative;overflow:hidden;">
+
+  <!-- 🎨 WAVE 7: CTA Burgundy — prawa strona -->
+  <div class="sp-wave" style="right:0; top:0; height:100%; width:130px; opacity:0.25; background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.12) 10px, rgba(255,255,255,0.12) 20px); border:2px dashed rgba(255,255,255,0.4); border-radius:12px; display:flex; align-items:center; justify-content:center;"><span style="writing-mode:vertical-rl; color:white; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; font-family:var(--font);">WAVE 7</span></div>
+  <div class="cta-inner" style="flex-direction:column; gap:48px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:280px;"><h2>Need experienced SF consultants for your project?</h2><p>Rolling out SAP SuccessFactors and need the right people on your side? Smart People's TaaS (Team as a Service) model connects companies with experienced SF consultants for projects across Europe, the UAE and Australia. Contact Piotr Ławrynowicz — he'll find the right people fast.</p></div>
+      <div class="cta-btns" style="flex-shrink:0;"><a href="https://www.linkedin.com/in/piotrlaw/" class="btn-white btn-white-burgundy" target="_blank">Contact Piotr Ławrynowicz →</a><a href="https://smartpeople.com.pl/kontakt/" class="btn-ghost">Contact TaaS Team</a></div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.15);"></div>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:280px;">
+        <div style="font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;">Client-Side Advisory</div>
+        <h2 style="font-size:clamp(20px,2.4vw,28px);">Navigating an SF implementation without internal SF expertise?</h2>
+        <p>Smart People's <strong>Embedded Advisor</strong> joins your team for 2–4 days a week — sitting at the same table as your implementation partner, but representing only your interests. We prepare you for workshops, flag risks in real time, and build your team's SF competence along the way.</p>
+        <p style="margin-top:10px; font-size:13px; color:rgba(255,255,255,0.55);">You have a vendor. Now you need someone on your side who actually understands SF.</p>
+      </div>
+      <div class="cta-btns" style="flex-shrink:0;"><a href="https://smartpeople.com.pl/kontakt/" class="btn-white btn-white-burgundy" target="_blank">Ask about Embedded Advisory →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUGGEST A TOPIC -->
+<section class="suggest-section">
+  <div class="suggest-box">
+    <h3>💡 What should we write about next?</h3>
+    <div class="sg-sub">Is there a topic, problem, or question about SAP SuccessFactors that you wish someone explained properly? Tell us — we'll build it.</div>
+    <form id="suggestForm" onsubmit="submitSuggest(event)">
+      <textarea name="topic" id="sg-topic" placeholder="e.g. 'How to handle multi-country time-off policies in EC' or 'Recruiting module vs external ATS — when to use which'..." required></textarea>
+      <div class="sg-row">
+        <input type="email" name="email" class="sg-email" placeholder="Your email (optional — we'll let you know when it's ready)">
+        <button type="submit" class="sg-btn">Submit →</button>
+      </div>
+    </form>
+    <div class="sg-thanks" id="sg-thanks">✓ Thank you! We've noted your suggestion. If you left your email, we'll notify you when we publish it.</div>
+  </div>
+</section>
+
+<!-- STICKY RECOMMENDATION BAR -->
+<div class="sticky-rec" id="stickyRec">
+  <div>
+    <div class="sr-label">Based on your profile</div>
+    <div class="sr-title" id="sr-title"></div>
+  </div>
+  <button class="sr-btn" id="sr-btn" onclick="stickyGo()">View →</button>
+  <button class="sr-close" onclick="closeStickyRec()">×</button>
+</div>
+
+<!-- FOOTER -->
+<footer style="background:#0a1828;color:rgba(255,255,255,.3);padding:36px 60px;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,.05);">
+  <div style="font-size:16px;font-weight:900;color:rgba(255,255,255,.5);margin-bottom:8px;">Smart<span style="color:var(--orange)">People</span></div>
+  <p>© 2026 Smart People · <a href="https://smartpeople.com.pl/polityka-prywatnosci/" style="color:var(--teal);text-decoration:none;">Privacy Policy</a> · <a href="https://smartpeople.com.pl/kontakt/" style="color:var(--teal);text-decoration:none;">Contact</a></p>
+  <p style="margin-top:6px;">Smart Knowledge Hub — part of <a href="https://smartpeople.com.pl/" style="color:var(--teal);text-decoration:none;">smartpeople.com.pl</a></p>
+</footer>
+
+<script>
+  let currentAud = 'individuals';
+  function switchPanel(aud, scrollTo) {
+    document.querySelectorAll('.aud-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.cta-banner').forEach(b => b.style.display = 'none');
+    document.getElementById('panel-' + aud).classList.add('active');
+    document.getElementById('cta-' + aud).style.display = 'block';
+    currentAud = aud;
+    const split = document.getElementById('individuals-split');
+    if (split) split.style.display = (aud === 'individuals') ? 'block' : 'none';
+    const deep = document.getElementById('academy-deep');
+    if (deep) deep.style.display = (aud === 'individuals') ? 'block' : 'none';
+    if (scrollTo) { document.getElementById('panels-anchor').scrollIntoView({behavior:'smooth'}); }
+    setTimeout(() => { document.querySelectorAll('#panel-' + aud + ' .reveal').forEach(el => observer.observe(el)); }, 50);
+  }
+  function switchPanelById(aud) { switchPanel(aud, false); }
+  function scrollToPanelAndSwitch(aud) { switchPanel(aud, true); }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  const splitInit = document.getElementById('individuals-split');
+  if (splitInit) splitInit.style.display = 'block';
+  const deepInit = document.getElementById('academy-deep');
+  if (deepInit) deepInit.style.display = 'block';
+
+  const BLOG_RSS_URL = 'https://smartpeople.com.pl/feed/';
+  async function loadBlog() {
+    const grid = document.getElementById('blog-grid');
+    try {
+      const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(BLOG_RSS_URL) + '&count=3');
+      const data = await res.json();
+      if (!data.items || data.items.length === 0) throw new Error('No items');
+      grid.innerHTML = data.items.slice(0,3).map(item => {
+        const date = new Date(item.pubDate).toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+        const desc = item.description.replace(/<[^>]*>/g,'').slice(0,130) + '…';
+        return '<a href="'+item.link+'" target="_blank" style="background:white;border-radius:14px;padding:24px;border:1.5px solid var(--gray-line);display:block;transition:all .25s;text-decoration:none;"><div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">'+date+'</div><div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.4;margin-bottom:10px;">'+item.title+'</div><div style="font-size:12px;color:var(--gray);line-height:1.65;margin-bottom:16px;">'+desc+'</div><div style="font-size:11px;font-weight:800;color:var(--teal);letter-spacing:.5px;">Read article →</div></a>';
+      }).join('');
+    } catch(e) {
+      const blogSection = grid.closest('section');
+      if (blogSection) blogSection.style.display = 'none';
+    }
+  }
+  loadBlog();
+</script>
+
+<!-- PREMIUM REGISTRATION MODAL -->
+<div class="reg-modal-bg" id="regModal">
+  <div class="reg-modal">
+    <button class="reg-close" onclick="closeRegModal()">&times;</button>
+    <h3>🔒 Premium Resource</h3>
+    <div class="reg-sub">Register once to unlock all premium materials — guides, checklists, and the full 27-chapter SF Implementation Guide.</div>
+    <div id="reg-resource" style="background:rgba(255,145,77,0.12);border:1px solid rgba(255,145,77,0.3);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#ff914d;font-weight:600;"></div>
+    <form id="regForm" action="https://formspree.io/f/XXXXXXXX" method="POST">
+      <input type="hidden" name="_subject" value="Hub Premium Registration">
+      <input type="hidden" id="reg-material" name="requested_material" value="">
+      <label>Full Name *</label>
+      <input type="text" name="name" placeholder="Your full name" required>
+      <label>Company *</label>
+      <input type="text" name="company" placeholder="Company name" required>
+      <label>Job Title *</label>
+      <input type="text" name="job_title" placeholder="e.g. Head of HR, Project Manager" required>
+      <label>Work Email *</label>
+      <input type="email" name="email" placeholder="your.name@company.com" required>
+      <button type="submit" class="reg-btn">Register for Free Access →</button>
+    </form>
+    <div class="reg-note">We'll send your access credentials to the email above.<br>No spam. Your data is used only to verify access.</div>
+  </div>
+</div>
+
+<!-- QUIZ MODAL -->
+<div class="quiz-modal-bg" id="quizModal">
+  <div class="quiz-modal">
+    <div class="quiz-progress" id="quizProgress">
+      <div class="quiz-dot current"></div>
+      <div class="quiz-dot"></div>
+      <div class="quiz-dot"></div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="quiz-step active" id="qStep1">
+      <h3>Welcome to the Hub 👋</h3>
+      <div class="quiz-sub">Answer 3 quick questions — we'll show you the resources that match your situation.</div>
+      <div class="quiz-q">Who are you?</div>
+      <div class="quiz-opts">
+        <div class="quiz-opt" onclick="quizAnswer(1,'individual')">
+          <div class="qo-icon">🎯</div>
+          <div><div class="qo-title">SF Consultant or Candidate</div><div class="qo-desc">I want to learn SF, get certified, or advance my career</div></div>
+        </div>
+        <div class="quiz-opt" onclick="quizAnswer(1,'company')">
+          <div class="qo-icon">🏢</div>
+          <div><div class="qo-title">HR / L&D Leader at a Company</div><div class="qo-desc">I need to train my team on SuccessFactors</div></div>
+        </div>
+        <div class="quiz-opt" onclick="quizAnswer(1,'implementer')">
+          <div class="qo-icon">⚙️</div>
+          <div><div class="qo-title">Company Running or Planning SF Implementation</div><div class="qo-desc">We're implementing SF and need guidance or support</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 (varies by answer) -->
+    <div class="quiz-step" id="qStep2">
+      <div class="quiz-q" id="q2text"></div>
+      <div class="quiz-opts" id="q2opts"></div>
+    </div>
+
+    <!-- Step 3: Result -->
+    <div class="quiz-step" id="qStep3">
+      <h3 id="q3title"></h3>
+      <div class="quiz-sub" id="q3desc"></div>
+      <div style="display:flex;gap:10px;">
+        <button onclick="quizFinish()" style="flex:1;padding:13px;border:none;border-radius:10px;background:var(--teal);color:white;font-family:var(--font);font-size:14px;font-weight:800;cursor:pointer;">Show My Resources →</button>
+      </div>
+    </div>
+
+    <div class="quiz-skip"><a onclick="closeQuiz()">Skip — I'll browse myself</a></div>
+  </div>
+</div>
+
+<script>
+  // ── QUIZ LOGIC ──────────────────────────────────
+  let quizResult = 'individuals';
+  let quizData = {};
+
+  function quizAnswer(step, val) {
+    quizData['step'+step] = val;
+    const dots = document.querySelectorAll('.quiz-dot');
+
+    if (step === 1) {
+      dots[0].className = 'quiz-dot done';
+      dots[1].className = 'quiz-dot current';
+      document.getElementById('qStep1').classList.remove('active');
+      document.getElementById('qStep2').classList.add('active');
+
+      const q2 = document.getElementById('q2text');
+      const q2o = document.getElementById('q2opts');
+
+      if (val === 'individual') {
+        q2.textContent = 'Where are you in your SF journey?';
+        q2o.innerHTML = `
+          <div class="quiz-opt" onclick="quizAnswer(2,'beginner')"><div class="qo-icon">🌱</div><div><div class="qo-title">Just starting — exploring SF</div><div class="qo-desc">No certification yet, learning the basics</div></div></div>
+          <div class="quiz-opt" onclick="quizAnswer(2,'preparing')"><div class="qo-icon">📚</div><div><div class="qo-title">Preparing for certification</div><div class="qo-desc">Studying for EC exam or already scheduled</div></div></div>
+          <div class="quiz-opt" onclick="quizAnswer(2,'certified')"><div class="qo-icon">🏆</div><div><div class="qo-title">Already certified</div><div class="qo-desc">Looking for my first or next SF role</div></div></div>`;
+        quizResult = 'individuals';
+      } else if (val === 'company') {
+        q2.textContent = 'What is your main goal?';
+        q2o.innerHTML = `
+          <div class="quiz-opt" onclick="quizAnswer(2,'convince')"><div class="qo-icon">💼</div><div><div class="qo-title">Build the business case for training</div><div class="qo-desc">Need to convince leadership to invest</div></div></div>
+          <div class="quiz-opt" onclick="quizAnswer(2,'plan')"><div class="qo-icon">📋</div><div><div class="qo-title">Plan and choose a training program</div><div class="qo-desc">Budget approved, comparing options</div></div></div>
+          <div class="quiz-opt" onclick="quizAnswer(2,'assess')"><div class="qo-icon">🔍</div><div><div class="qo-title">Assess our team's current skill level</div><div class="qo-desc">Figure out where the gaps are</div></div></div>`;
+        quizResult = 'companies';
+      } else {
+        q2.textContent = 'Where is your SF project right now?';
+        q2o.innerHTML = `
+          <div class="quiz-opt" onclick="quizAnswer(2,'planning')"><div class="qo-icon">🗓️</div><div><div class="qo-title">Planning / pre-implementation</div><div class="qo-desc">Evaluating partners, scoping, getting ready</div></div></div>
+          <div class="quiz-opt" onclick="quizAnswer(2,'inprogress')"><div class="qo-icon">🔧</div><div><div class="qo-title">Implementation in progress</div><div class="qo-desc">Configuration, testing, approaching go-live</div></div></div>
+          <div class="quiz-opt" onclick="quizAnswer(2,'postlive')"><div class="qo-icon">🚀</div><div><div class="qo-title">Post go-live</div><div class="qo-desc">Live system, stabilizing, planning next phase</div></div></div>`;
+        quizResult = 'implementers';
+      }
+    }
+
+    if (step === 2) {
+      dots[1].className = 'quiz-dot done';
+      dots[2].className = 'quiz-dot current';
+      document.getElementById('qStep2').classList.remove('active');
+      document.getElementById('qStep3').classList.add('active');
+
+      // Personalized result message
+      const titles = {
+        'individual-beginner': "Start here — we've got your foundation covered",
+        'individual-preparing': "You're on the right track — these will help you pass",
+        'individual-certified': "Nice. Here's how to land the role",
+        'company-convince': "We'll help you build the case",
+        'company-plan': "Here's everything you need to choose wisely",
+        'company-assess': "Let's find the gaps first",
+        'implementer-planning': "Good — preparation is everything",
+        'implementer-inprogress': "These resources are built for exactly this moment",
+        'implementer-postlive': "The first 6 months matter most"
+      };
+      const descs = {
+        'individual-beginner': "We recommend starting with the Glossary and Career Roadmap — they'll give you the full picture before you dive into certification prep.",
+        'individual-preparing': "The Certification Changes Compendium and Career Guide are your priority. Check if the exam format has changed since you started studying.",
+        'individual-certified': "The Job Search Guide will help you position yourself. The Glossary is a good refresher before interviews.",
+        'company-convince': "Start with the Business Case — it answers every objection. Then use the ROI Calculator with your own numbers.",
+        'company-plan': "The Buyer's Guide compares all options honestly. The Step-by-Step Training Guide gives you the planning framework.",
+        'company-assess': "The Skills Gap Assessment will show you exactly where your team stands. Start there.",
+        'implementer-planning': "The Readiness Audit tells you if you're actually ready. The 20 Questions guide helps you evaluate partners.",
+        'implementer-inprogress': "Project Timeline shows where you should be. The 47 Checkpoints are your go-live safety net.",
+        'implementer-postlive': "The Post Go-Live Survival Guide is exactly what you need. The Project Rescue deep dive helps you spot problems early."
+      };
+
+      const key = quizData.step1 + '-' + val;
+      document.getElementById('q3title').textContent = titles[key] || "Here are your recommended resources";
+      document.getElementById('q3desc').textContent = descs[key] || "We've selected the most relevant materials for you.";
+    }
+  }
+
+  function quizFinish() {
+    closeQuiz();
+    scrollToPanelAndSwitch(quizResult);
+    localStorage.setItem('hub_quiz_done', 'true');
+    localStorage.setItem('hub_quiz_profile', quizResult);
+  }
+
+  function closeQuiz() {
+    document.getElementById('quizModal').classList.remove('open');
+    localStorage.setItem('hub_quiz_done', 'true');
+  }
+
+  // Show quiz on first visit
+  if (!localStorage.getItem('hub_quiz_done')) {
+    setTimeout(() => { document.getElementById('quizModal').classList.add('open'); }, 1200);
+  }
+
+  // ── PROGRESS TRACKING ────────────────────────────
+  function getDownloaded() {
+    try { return JSON.parse(localStorage.getItem('hub_downloads') || '[]'); } catch(e) { return []; }
+  }
+
+  function markDownloaded(title) {
+    const dl = getDownloaded();
+    if (!dl.includes(title)) { dl.push(title); localStorage.setItem('hub_downloads', JSON.stringify(dl)); }
+    updateDownloadBadges();
+  }
+
+  function updateDownloadBadges() {
+    const dl = getDownloaded();
+    document.querySelectorAll('.mat-card').forEach(card => {
+      const h3 = card.querySelector('h3');
+      if (!h3) return;
+      const title = h3.textContent.trim();
+      if (dl.includes(title)) {
+        card.classList.add('card-downloaded');
+      }
+    });
+    updateSuggestions();
+  }
+
+  // Track clicks on download buttons
+  document.querySelectorAll('.dl-btn[download]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const card = this.closest('.mat-card');
+      if (card) {
+        const h3 = card.querySelector('h3');
+        if (h3) markDownloaded(h3.textContent.trim());
+      }
+    });
+  });
+
+  // Suggestion engine
+  const materialOrder = {
+    'individuals': [
+      'Why SF Certification Changes Your Career — and Why How You Get It Matters',
+      'SF Glossary: 50 Terms You Need to Know',
+      'From Beginner to Certified SF Consultant: Career Roadmap',
+      'How to Get Your First Job as an SF Consultant',
+      'Changes in SAP SF Exams & Certifications 2025–2026'
+    ],
+    'companies': [
+      'Why Training Your SF Team Pays Off — Business Case',
+      'How to Plan SF Team Training Step by Step',
+      'SF Training ROI Calculator',
+      'SF Skills Gap Assessment',
+      "SF Training Buyer's Guide"
+    ],
+    'implementers': [
+      'Project Rescue: 5 Critical Errors That Destroy SF Implementations',
+      'SF Readiness Audit 2026',
+      'SF Project Timeline: Kickoff to Go-Live',
+      'SF Post Go-Live Survival Guide',
+      '20 Questions Before Signing with SF Partner',
+      'EC Go-Live Readiness — 47 Technical Checkpoints'
+    ]
+  };
+
+  function updateSuggestions() {
+    const dl = getDownloaded();
+    if (dl.length === 0) return;
+
+    // Find which panel user is in based on quiz or current
+    const profile = localStorage.getItem('hub_quiz_profile') || currentAud;
+    const order = materialOrder[profile] || [];
+    const next = order.find(t => !dl.includes(t));
+
+    // Show suggestion in panel intro
+    document.querySelectorAll('.next-suggestion').forEach(s => s.remove());
+    if (next) {
+      const panel = document.getElementById('panel-' + profile);
+      if (!panel) return;
+      const intro = panel.querySelector('.panel-intro');
+      if (!intro) return;
+      const sug = document.createElement('div');
+      sug.className = 'next-suggestion show';
+      sug.innerHTML = '<div class="ns-label">📖 Recommended next</div><div class="ns-title">' + next + '</div>';
+      intro.after(sug);
+    }
+  }
+
+  // ── MINI ROI CALCULATOR ────────────────────────────
+  function calcROI() {
+    const rate = parseFloat(document.getElementById('roi-rate').value) || 0;
+    const days = parseFloat(document.getElementById('roi-days').value) || 0;
+    const reduction = parseFloat(document.getElementById('roi-reduction').value) || 0;
+    const annual = Math.round(rate * days * (reduction/100) * 12);
+    const r = document.getElementById('roi-result');
+    document.getElementById('roi-value').textContent = '€' + annual.toLocaleString('en');
+    const payback = annual > 0 ? Math.ceil((4000 * 2) / (annual / 12)) : 0; // assume 2 people × €4k
+    document.getElementById('roi-sub').textContent = payback > 0 
+      ? 'That\'s €' + Math.round(annual/12).toLocaleString('en') + '/month. Training 2 people (~€8,000) pays back in ~' + payback + ' months.'
+      : 'Enter your numbers above to see the estimate.';
+    r.classList.add('show');
+  }
+
+  // ── QUICK SKILLS SCAN ────────────────────────────
+  let scanAnswers = {};
+  function scanSelect(el, val) {
+    const q = el.closest('.scan-q');
+    const area = q.dataset.area;
+    q.querySelectorAll('.scan-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    scanAnswers[area] = val;
+    if (Object.keys(scanAnswers).length >= 5) {
+      document.getElementById('scan-btn').style.opacity = '1';
+      document.getElementById('scan-btn').style.pointerEvents = 'all';
+    }
+  }
+
+  function calcScan() {
+    const total = Object.values(scanAnswers).reduce((a,b) => a+b, 0);
+    const max = 10;
+    const pct = Math.round((total/max)*100);
+
+    document.getElementById('scan-score').textContent = total + ' / ' + max;
+    document.getElementById('scan-bar').style.width = pct + '%';
+
+    let color, verdict;
+    if (total >= 8) { color = '#20a2b9'; verdict = '✅ Your team is in good shape. Consider advanced or module-specific training to go further.'; }
+    else if (total >= 5) { color = '#ff914d'; verdict = '⚠️ Gaps exist. Targeted training will make a real difference — especially in the weak areas below.'; }
+    else { color = '#8B2635'; verdict = '🚩 Critical gaps. Your team cannot own SF independently yet. A structured certification program is strongly recommended.'; }
+
+    document.getElementById('scan-bar').style.background = color;
+    document.getElementById('scan-verdict').style.color = color;
+    document.getElementById('scan-verdict').textContent = verdict;
+
+    const gaps = Object.entries(scanAnswers).filter(([k,v]) => v < 2).map(([k,v]) => v === 0 ? '🔴 ' + k : '🟡 ' + k);
+    document.getElementById('scan-gaps').innerHTML = gaps.length > 0 
+      ? '<strong>Areas needing attention:</strong> ' + gaps.join(' · ')
+      : 'No critical gaps detected in this quick scan.';
+
+    document.getElementById('scan-result').classList.add('show');
+  }
+
+  // Init progress on load
+  updateDownloadBadges();
+
+  // ── ANIMATED COUNTERS ──────────────────────────────
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now) {
+        const pct = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - pct, 3); // ease out cubic
+        el.textContent = Math.round(target * eased);
+        if (pct < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
+
+  // ── SEARCH / FILTER ────────────────────────────────
+  function filterCards() {
+    const q = document.getElementById('hubSearch').value.toLowerCase().trim();
+    const allCards = document.querySelectorAll('.mat-card');
+    let visible = 0;
+    allCards.forEach(card => {
+      const text = (card.querySelector('h3')?.textContent + ' ' + card.querySelector('p')?.textContent).toLowerCase();
+      if (!q || text.includes(q)) {
+        card.classList.remove('search-hidden');
+        visible++;
+      } else {
+        card.classList.add('search-hidden');
+      }
+    });
+    const counter = document.getElementById('searchCount');
+    if (q) {
+      counter.textContent = visible + ' found';
+      // Show all panels when searching
+      document.querySelectorAll('.aud-panel').forEach(p => p.classList.add('active'));
+    } else {
+      counter.textContent = '';
+      // Restore single panel view
+      document.querySelectorAll('.aud-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + currentAud).classList.add('active');
+    }
+  }
+
+  // ── LINKEDIN SHARE BUTTONS ─────────────────────────
+  const HUB_URL = 'https://smartpeople.com.pl/hub/';
+  document.querySelectorAll('.dl-btn[download]').forEach(btn => {
+    const footer = btn.closest('.card-footer');
+    if (!footer) return;
+    const card = btn.closest('.mat-card');
+    const title = card?.querySelector('h3')?.textContent || '';
+    const liLink = document.createElement('a');
+    liLink.className = 'li-share';
+    liLink.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(HUB_URL);
+    liLink.target = '_blank';
+    liLink.rel = 'noopener';
+    liLink.title = 'Share on LinkedIn';
+    liLink.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Share';
+    footer.appendChild(liLink);
+  });
+
+  // ── STICKY RECOMMENDATION BAR ──────────────────────
+  function showStickyRec() {
+    const dl = getDownloaded();
+    if (dl.length === 0) return;
+    const profile = localStorage.getItem('hub_quiz_profile') || currentAud;
+    const order = materialOrder[profile] || [];
+    const next = order.find(t => !dl.includes(t));
+    if (!next) return;
+    if (localStorage.getItem('hub_sticky_dismissed') === next) return;
+    document.getElementById('sr-title').textContent = '📖 Recommended: ' + next;
+    document.getElementById('sr-btn').onclick = function() {
+      closeStickyRec();
+      scrollToPanelAndSwitch(profile);
+    };
+    setTimeout(() => { document.getElementById('stickyRec').classList.add('show'); }, 3000);
+  }
+  function closeStickyRec() {
+    const bar = document.getElementById('stickyRec');
+    bar.classList.remove('show');
+    const title = document.getElementById('sr-title').textContent.replace('📖 Recommended: ', '');
+    localStorage.setItem('hub_sticky_dismissed', title);
+  }
+  showStickyRec();
+
+  // ── SUGGEST TOPIC ──────────────────────────────────
+  function submitSuggest(e) {
+    e.preventDefault();
+    const topic = document.getElementById('sg-topic').value;
+    const email = e.target.querySelector('.sg-email').value;
+    // Could POST to Formspree here — for now, log and show thanks
+    console.log('Topic suggestion:', topic, email);
+    document.getElementById('suggestForm').style.display = 'none';
+    document.getElementById('sg-thanks').style.display = 'block';
+    // Optional: send to Formspree
+    fetch('https://formspree.io/f/XXXXXXXX', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ _subject:'Hub Topic Suggestion', topic:topic, email:email||'(not provided)' })
+    }).catch(()=>{});
+  }
+</script>
+
+</body></html>
